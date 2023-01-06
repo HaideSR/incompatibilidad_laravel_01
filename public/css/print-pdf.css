@@ -1,0 +1,74 @@
+/* PDF */
+body {
+   background-color: white !important;
+   font-size: 12px;
+}
+
+.bx-pdf-print {
+   background-color: white;
+   font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+   margin: 0;
+   padding: 0;
+}
+
+.logo-sup {
+   width: 80px;
+}
+
+.pr-head {
+   /* display:table-header-group; */
+   position: relative;
+}
+
+.pr-bloque {
+   margin-top: 15px;
+   page-break-inside: avoid;
+}
+
+.bx-pdf-print {
+   max-width: 980px;
+   margin: auto;
+}
+
+table {
+   border-collapse: collapse;
+   width: 100%;
+   margin-bottom: 6px;
+}
+
+table,
+th,
+td {
+   border: 1px solid black;
+}
+
+table td {
+   padding: 4px;
+}
+
+.pr-firma {
+   margin-top: 40px;
+}
+
+/* body{
+   margin: 130px 0 0 0 !important;
+} */
+/* .pr-fixed-head{
+   position:fixed;
+   top: 0px;
+   left: 0px;
+   width:100%;
+}
+
+@page {
+   margin: 6cm 1cm 1cm 1cm;
+   padding:  6cm 1cm 1cm 1cm;
+} */ 
+/* @media print {
+   body{
+      margin: 100px 0;
+   }
+} */
