@@ -14,12 +14,13 @@
    <link rel="stylesheet" href="{{ URL::asset('css/app.css') }} ">
    <link rel="stylesheet" href="{{ URL::asset('css/menu.css') }} ">
    <link rel="stylesheet" href="{{ URL::asset('css/forms.css') }} ">
+   <script src="{{ URL::asset('js/popper.min.js') }}" defer></script>
    <script src="{{ URL::asset('js/bootstrap.min.js') }}" defer></script>
    <script src="{{ URL::asset('js/steps.js') }}" defer></script>
 </head>
 
 <body>
-   <div>
+   {{-- <div>
       @if (Route::has('login'))
          <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
@@ -34,7 +35,7 @@
             @endauth
          </div>
       @endif
-   </div>
+   </div> --}}
    <div class="layout has-sidebar fixed-sidebar fixed-header main-content">
       @include('_componentes.menu')
       <div class="view-content">

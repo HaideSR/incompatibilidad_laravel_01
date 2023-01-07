@@ -1,10 +1,11 @@
 const nextBtn = document.getElementById('next')
 const prevBtn = document.getElementById('prev')
-const grupos  = document.getElementById('grupos').children
-const tabs    = document.getElementById('grupotabs').children
-const totalGrupos = grupos.length
+const grupos  = document.getElementById('grupos')?.children
+const tabs    = document.getElementById('grupotabs')?.children
+const totalGrupos = grupos ? grupos.length : 0
+const cantTabs = tabs ? tabs.length : 0
 
-for (let j = 0; j < tabs.length; j++) {
+for (let j = 0; j < cantTabs; j++) {
    const item = tabs[j].children[0]
    item.addEventListener('click', e =>{
       const itemClic = e.target.closest('li')
@@ -12,7 +13,7 @@ for (let j = 0; j < tabs.length; j++) {
    })
 }
 
-nextBtn.addEventListener('click', () => {
+nextBtn?.addEventListener('click', () => {
    const nroIndex = actualIndex()
    if(nroIndex >= totalGrupos){
       showItem(totalGrupos)
@@ -21,7 +22,7 @@ nextBtn.addEventListener('click', () => {
    }
 });
 
-prevBtn.addEventListener('click', () => {
+prevBtn?.addEventListener('click', () => {
    const nroIndex = actualIndex()
    if(nroIndex > 1){
       showItem(nroIndex - 1)
@@ -33,7 +34,8 @@ prevBtn.addEventListener('click', () => {
 function showItem(indexShow){
    sessionStorage.setItem('indexShow', indexShow)
    validarBtns(indexShow)
-   for (let i = 0; i < grupos.length; i++) {
+   let cantGs = grupos ? grupos.length : 0
+   for (let i = 0; i < cantGs; i++) {
       grupos[i].classList.remove('d-show')
       tabs[i].classList.remove('form-stepper-active')
       if(i+1 == indexShow){
@@ -45,6 +47,8 @@ function showItem(indexShow){
 }
 
 function validarBtns(indexShow){
+   if(!nextBtn) return;
+   if(!prevBtn) return;
    if(indexShow == 1){
       prevBtn.setAttribute('disabled', true)
    }else{

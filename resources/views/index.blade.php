@@ -5,7 +5,7 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <title>Laravel</title>
+   <title>SISTEMA INCOMPATIBILIDADES</title>
    
    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }} ">
@@ -15,7 +15,6 @@
    <link rel="stylesheet" href="{{ URL::asset('css/forms.css') }} ">
    <link rel="stylesheet" href="{{ URL::asset('css/login.css') }} ">
    <script src="{{ URL::asset('js/bootstrap.min.js') }}" defer></script>
-   <script src="{{ URL::asset('js/steps.js') }}" defer></script>
 </head>
 
 <body>

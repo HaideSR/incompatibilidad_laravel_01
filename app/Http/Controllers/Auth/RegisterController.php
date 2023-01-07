@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+// use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -22,7 +24,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+   //  use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
@@ -62,12 +64,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+    public function registro(Request $request){
+      $request->validate([
+         'email' => 'required|email|unique:t_users',
+         'password' => 'required|string|min:6|confirmed',
+         'password_confirmation' => 'required',
+      ]);
+      User::create([
+         'email'     => $request->email,
+         'password'  => Hash::make($request->password),
+      ]);
+      return redirect("login")->withSuccess(['success' => 'Registro con éxito, Revisa tu correo para validar tu correo']);
     }
 }

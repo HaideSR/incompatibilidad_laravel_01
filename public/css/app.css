@@ -111,3 +111,19 @@ input[type="checkbox"] {
 .italic{
    font-style: italic;
 }
+.block{
+   display: block;
+}
+
+.btn-h-user{
+   padding: 8px;
+   border: none;
+   border-radius: 6px;
+   background-color: rgb(238, 238, 238);
+}
+.btn-h-user .icon-account_circle{
+   font-size: 25px;
+   margin-right: 6px;
+   vertical-align: middle;
+   color: #545454;
+}
