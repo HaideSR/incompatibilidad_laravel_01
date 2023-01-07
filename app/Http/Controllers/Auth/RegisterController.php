@@ -70,9 +70,13 @@ class RegisterController extends Controller
          'password' => 'required|string|min:6|confirmed',
          'password_confirmation' => 'required',
       ]);
+      
       User::create([
          'email'     => $request->email,
          'password'  => Hash::make($request->password),
+         'estado'    => '1',
+         'confirmado' => '0',
+         'nivel'     => 'FUNCIONARIO'
       ]);
       return redirect("login")->withSuccess(['success' => 'Registro con éxito, Revisa tu correo para validar tu correo']);
     }

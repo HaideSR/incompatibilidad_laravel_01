@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Models\Funcionario;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Session;
 
 class LoginController extends Controller
 {
@@ -40,7 +40,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+    
         $this->middleware('guest')->except('logout');
+        
     }
     public function authenticate(Request $request){
       
@@ -49,18 +51,30 @@ class LoginController extends Controller
       ]);
 
       $email = $request->email;
-      $password = $request->password; // Hash::make($request->password);
+      $password = $request->password;
       if (Auth::attempt(['email'=> $email, 'password' => $password])) {
          $request->session()->regenerate();
          $user = Auth::User();
+         $isAdmin = $user->nivel == 'ADMIN' ? true : false;
+         Session::put('id', $user->id);
+         Session::put('isAdmin', $isAdmin);
          Session::put('email', $user->email);
+         Session::put('nivel', $user->nivel);
+         Session::put('confirmado', $user->confirmado);
+
+         $funcionario = Funcionario::select()->where('id_usuario', '=', $user->id)->first();
+         // $funcionario = Funcionario::where('id_usuario', $user->id)->firstOrFail();
+         if($funcionario){
+            Session::put('nombre', $funcionario->nombres);
+         }
+
          return redirect('/inicio');
       }else{
          return back()->withErrors(['invalid' => 'Las credenciales no son válidas']);
       }
     }
-    public function logout()
-    {
+    public function logout(){
+         Session::flush();
         Auth::logout();
         return redirect('/login');
     }

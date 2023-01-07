@@ -8,7 +8,7 @@
    box-shadow: 1px 1px 4px #9aa0b9;
    display: flex;
    align-items: center;
-   padding: 20px;
+   padding: 10px;
    background-color: white;
 }
 
@@ -313,7 +313,7 @@
 }
 
 .layout .sidebar.has-bg-image:not(.collapsed) .menu>ul>.sub-menu>.sub-menu-list {
-   background-color: rgba(11, 26, 44, 0.6);
+   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .layout.rtl .sidebar .menu .menu-item a .menu-icon {
@@ -386,4 +386,11 @@ body {
    max-width: 100%;
    margin: auto;
    display: block;
+}
+.sub-menu-list .menu-item a{
+   padding: 0 12px !important;
+   height: 40px !important;
+}
+.open-submenu ~ .sub-menu-list{
+   display: block !important;
 }

@@ -30,7 +30,7 @@ class FuncionarioController extends Controller
         //->join('t_fiscalias as tf','t_funcionario.id_fiscalia','=','tf.id')
         ->join('t_usuarios as us','t_funcionario.id_usuario','=','us.id')
         ->paginate(5);
-       return view('funcionario.index',compact('funcionarios'));
+       return view('funcionario.index', compact('funcionarios'));
     }
    public function createPDF(Request $request){
       $ID = $request->query('idF');
@@ -90,6 +90,9 @@ class FuncionarioController extends Controller
     public function store(Request $request)
     {
       $datosFuncionario = request()->except('_token');
+      $request->validate([
+         'numero_ci' => 'required|unique',
+      ]);
       Funcionario::insert($datosFuncionario);
       return redirect()->action([FuncionarioController::class, 'index']);
     }

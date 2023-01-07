@@ -4,7 +4,11 @@
       <div class="dropdown">
          <button class="btn-h-user dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="icon-account_circle"></i>
-            <span>{{ Auth::user()->email }}</span>
+            @if(Session::get('nombre'))
+               <span>{{ Session::get('nombre') }}</span>
+            @else
+               <span>{{ Auth::user()->email }}</span>
+            @endif
          </button>
          <ul class="dropdown-menu">
             <li>
