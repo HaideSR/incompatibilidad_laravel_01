@@ -51,6 +51,7 @@ class LoginController extends Controller
       $email = $request->email;
       $password = $request->password; // Hash::make($request->password);
       if (Auth::attempt(['email'=> $email, 'password' => $password])) {
+         $request->session()->regenerate();
          $user = Auth::User();
          Session::put('email', $user->email);
          return redirect('/inicio');

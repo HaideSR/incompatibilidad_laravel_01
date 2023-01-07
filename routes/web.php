@@ -50,7 +50,7 @@ Route::get('/registrarme', function () {
 })->name('register')->middleware('guest');
 Route::post('/registrarme', [RegisterController::class, 'registro'])->name('registrarme')->middleware('guest');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::middleware(['auth'])->group( function() {
    Route::get('/inicio', function () {
       return view('home');
    });
