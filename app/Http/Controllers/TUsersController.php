@@ -19,12 +19,12 @@ class TUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-      // $all_columns = Schema::getColumnListing('t_users');
+      // $all_columns = Schema::getColumnListing('t_usuarios');
       // $exclude_columns = ['password', 'created_at', 'updated_at', 'id'];
       // $get_columns = 'id, email, estado, nivel'; // array_diff( $all_columns, $exclude_columns);
       // // echo dd($get_columns); 
-      $usuarios = User::select('f.id as id_funcionario', 'f.nombres', 't_users.id', 'email', 'estado', 'nivel')
-                     ->join('t_funcionario as f','f.id_usuario','=','t_users.id')
+      $usuarios = User::select('f.id as id_funcionario', 'f.nombres', 't_usuarios.id', 'email', 'estado', 'nivel')
+                     ->join('t_funcionario as f','f.id_usuario','=','t_usuarios.id')
                      ->where('nivel', 'ADMIN')
                      ->get();
 
@@ -50,7 +50,7 @@ class TUsersController extends Controller
      */
     public function store(Request $request){
       $request->validate([
-         'email' => 'required|email|unique:t_users',
+         'email' => 'required|email|unique:t_usuarios',
          'password' => 'required|string|min:6',
       ]);
       $user = User::create([

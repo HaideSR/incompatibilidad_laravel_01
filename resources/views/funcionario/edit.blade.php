@@ -52,11 +52,7 @@
             <label for="f9" class="form-label">Unidad</label>
             <input type="text" name='unidad' class="form-control" value="{{ $funcionario->unidad }}" id="f9">
          </div>
- 
-         <br><label>fecha de Registro:</label>
-         <input type="date" name="fecha_registro" placeholder="fecha_registro"
-            value="{{ $funcionario->fecha_registro }}"></br>
-         
+                
          <div class="d-flex justify-content-around bx--btns">
             <a href="{{ URL::previous() }}" class="btn btn-light">Cancelar</a>
             <button class="btn btn-primary" type="submit">Registrar </button>

@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('fecha_registro');
             $table->BigInteger('id_usuario')->unsigned();
             $table->timestamps();
-            $table->foreign('id_usuario')->references('id')->on('t_users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_usuario')->references('id')->on('t_usuarios')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

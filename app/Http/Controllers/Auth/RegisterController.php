@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     public function registro(Request $request){
       $request->validate([
-         'email' => 'required|email|unique:t_users',
+         'email' => 'required|email|unique:t_usuarios',
          'password' => 'required|string|min:6|confirmed',
          'password_confirmation' => 'required',
       ]);

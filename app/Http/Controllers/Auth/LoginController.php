@@ -56,8 +56,11 @@ class LoginController extends Controller
          $request->session()->regenerate();
          $user = Auth::User();
          $isAdmin = $user->nivel == 'ADMIN' ? true : false;
+         $isFuncionario = $user->nivel == 'FUNCIONARIO' ? true : false;
+
          Session::put('id', $user->id);
          Session::put('isAdmin', $isAdmin);
+         Session::put('isFuncionario', $isFuncionario);
          Session::put('email', $user->email);
          Session::put('nivel', $user->nivel);
          Session::put('confirmado', $user->confirmado);
@@ -66,6 +69,7 @@ class LoginController extends Controller
          // $funcionario = Funcionario::where('id_usuario', $user->id)->firstOrFail();
          if($funcionario){
             Session::put('nombre', $funcionario->nombres);
+            Session::put('id_funcionario', $funcionario->id);
          }
 
          return redirect('/inicio');

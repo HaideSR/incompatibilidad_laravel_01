@@ -13,7 +13,9 @@ use App\Models\MpSiNo;
 use App\Models\ParientesMp;
 use App\Models\TipoCausalesIncompatibilidad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PDF;
+use Session;
 
 class FuncionarioController extends Controller
 {
@@ -87,12 +89,16 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
       $datosFuncionario = request()->except('_token');
       $request->validate([
-         'numero_ci' => 'required|unique',
+         'numero_ci' => 'required|unique:t_funcionario',
       ]);
+      $datosFuncionario['fecha_registro'] = now();
+      if(!Session::get('isAdmin') ){
+         $datosFuncionario['id_usuario'] = Session::get('id');
+      }
+      // dd( $datosFuncionario );
       Funcionario::insert($datosFuncionario);
       return redirect()->action([FuncionarioController::class, 'index']);
     }
@@ -145,11 +151,7 @@ class FuncionarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-      // $funcionario = Funcionario::where('t_funcionario.id', '=', $id) ->first();
-      
       $funcionario = Funcionario::find($id);
-
-      // return view('funcionario.edit', ['funcionario' => $t_funcionario]); //forma 1
       return view('funcionario.edit')->with('funcionario', $funcionario);      //forma 2
     }
 
@@ -175,7 +177,6 @@ class FuncionarioController extends Controller
         $t_funcionario->celular = $request->celular;
         $t_funcionario->fiscalia_otro = $request->fiscalia_otro;
         $t_funcionario->unidad = $request->unidad;
-        $t_funcionario->fecha_registro = $request->fecha_registro;
         $t_funcionario->save();
         return redirect()->action([FuncionarioController::class, 'index']);
     }

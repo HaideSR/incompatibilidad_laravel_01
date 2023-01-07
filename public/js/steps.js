@@ -67,7 +67,7 @@ function actualIndex(){
 }
 
 function initShow(){
-   const nroIndex = sessionStorage.getItem('indexShow')
+   const nroIndex = actualIndex()
    showItem(nroIndex)
 }
 

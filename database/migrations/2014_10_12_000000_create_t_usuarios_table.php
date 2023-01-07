@@ -15,18 +15,13 @@ return new class extends Migration
     {
         Schema::create('t_usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('cedula_identidad')->unique();
-            $table->string('complemento')->nullable();
-            $table->string('expedido');
-            $table->string('nombres');
-            $table->string('apellido_paterno')->nullable();
-            $table->string('apellido_materno');
+            $table->string('nombre')->nullable();
+            $table->string('email')->unique();
             $table->string('nivel');
-            $table->string('activado');
-            $table->string('perfil');
-            $table->timestamp('email_verified_at')->unique();
-            $table->string('usuario');
             $table->string('password');
+            $table->boolean('estado');
+            $table->boolean('confirmado');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
