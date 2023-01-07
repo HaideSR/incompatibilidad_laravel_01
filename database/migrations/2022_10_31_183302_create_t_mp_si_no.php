@@ -15,14 +15,10 @@ return new class extends Migration
     {
         Schema::create('t_mp_si_no', function (Blueprint $table) {
             $table->id();
-
-            $table->string('grado'); 
-            $table->string('estado'); 
-            $table->BigInteger('id_funcionario')->unsigned();
-            
-
+            $table->string('consaguinidad'); 
+            $table->string('afinidad'); 
             $table->timestamps();
-
+            $table->BigInteger('id_funcionario')->unsigned();
             $table->foreign('id_funcionario')->references('id')->on('t_funcionario')->onDelete('cascade');
         });
     }

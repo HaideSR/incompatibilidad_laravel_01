@@ -95,11 +95,15 @@ class FuncionarioController extends Controller
          'numero_ci' => 'required|unique:t_funcionario',
       ]);
       $datosFuncionario['fecha_registro'] = now();
+      $isUserSession = Session::get('id');
       if(!Session::get('isAdmin') ){
-         $datosFuncionario['id_usuario'] = Session::get('id');
+         $datosFuncionario['id_usuario'] = $isUserSession;
       }
-      // dd( $datosFuncionario );
-      Funcionario::insert($datosFuncionario);
+      $newFunc = Funcionario::insert($datosFuncionario);
+      if(!Session::get('isAdmin') && $newFunc){
+         $currenteFunc = $this->setSesionFuncionario($isUserSession);
+         return redirect('/funcionario/'.$currenteFunc->id);
+      }
       return redirect()->action([FuncionarioController::class, 'index']);
     }
 
@@ -109,6 +113,12 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    private function setSesionFuncionario($id){
+      $funcionario = Funcionario::select()->where('id_usuario', '=', $id)->first();
+      Session::put('nombre', $funcionario->nombres);
+      Session::put('id_funcionario', $funcionario->id);
+      return $funcionario;
+    }
     public function show($id){
       $funcionario = Funcionario::find($id);
       $conyugue = Conyugue::select()->where('id_funcionario', '=', $id)->get();

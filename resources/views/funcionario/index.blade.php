@@ -4,7 +4,7 @@
    <div class="card">
       <div class="card-body">
 
-         @if (!Auth::user()->confirmado)
+         @if (!Auth::user()->confirmado && !Session::get('isAdmin'))
             <div class="card text-center mb">
                <div class="card-body">
                   <h5 class="card-title">Verificar correo electrónico</h5>
@@ -66,11 +66,11 @@
          @else
             @if (Session::get('id_funcionario'))
                <div class="text-center">
-                  <a href="{{ route('funcionario.show', Session::get('id_funcionario') ) }}" class="btn btn-primary">
+                  <a href="{{ route('funcionario.show', Session::get('id_funcionario')) }}" class="btn btn-success">
                      <span>Ver mis datos</span>
                   </a>
                </div>
-            @else 
+            @else
                <div class="text-center">
                   <a href="{{ route('funcionario.create') }}" class="btn btn-primary">
                      <i class="icon-add"></i>
