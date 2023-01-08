@@ -35,11 +35,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-   return view('index');
+   return view('auth.login');
 })->middleware('guest');
 
 Route::get('/login', function () {
-   return view('auth.login');
+   return redirect('/');//view('auth.login');
 })->name('login')->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'authenticate'] )->name('authenticate')->middleware('guest');

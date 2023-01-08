@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <title>SISTEMA INCOMPATIBILIDADES</title>
-   
+
    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="{{ URL::asset('icons/style.css') }} ">
    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }} ">
@@ -18,10 +18,7 @@
 </head>
 
 <body>
-   <section class="body">
-      <div class="container">
-         @yield('contenido')
-      </div>
-   </section>
+   @yield('contenido')
 </body>
+
 </html>
