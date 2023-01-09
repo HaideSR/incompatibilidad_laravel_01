@@ -7,6 +7,7 @@ body {
 .bx-pdf-print {
    background-color: white;
    font-family: Tahoma, Geneva, Verdana, sans-serif;
+   position: relative;
 }
 
 p {
@@ -72,3 +73,12 @@ table td {
       margin: 100px 0;
    }
 } */
+
+.pr-marca img{
+   max-width: 180px;
+   position: fixed;
+   opacity: .4;
+   top: 45%;
+   left: 45%;
+   transform: translate(-50%, -50%);
+}

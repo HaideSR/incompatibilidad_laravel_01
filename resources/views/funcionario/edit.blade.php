@@ -46,11 +46,21 @@
          </div>
          <div class="col-md-6">
             <label for="f9" class="form-label">Funcionario de la fiscalida de </label>
-            <input type="text" name='fiscalia_otro' class="form-control" value="{{ $funcionario->fiscalia_otro }}" id="f9">
+            <select name="id_fiscalia" id="inputFiscalia_id" class="form-control" id="f3" >
+               <option value="">--Selecciona fiscalia--</option>
+               @foreach($fiscalias as $fiscalia)
+               <option value="{{$fiscalia['id']}}" @selected( $fiscalia['id']== $funcionario['id_fiscalia']) >{{$fiscalia['denominacion']}}</option>
+               @endforeach
+           </select>
          </div> 
          <div class="col-md-6">
             <label for="f9" class="form-label">Unidad</label>
-            <input type="text" name='unidad' class="form-control" value="{{ $funcionario->unidad }}" id="f9">
+            <select name="id_unidad" id="inputFiscalia_id" class="form-control" id="f3" >
+               <option value="">--Selecciona unidad--</option>
+                  @foreach($unidades as $unidad)
+                  <option value="{{$unidad['id']}}" @selected( $unidad['id']== $funcionario['id_unidad'])>{{$unidad['unidad']}}</option>
+                  @endforeach
+           </select>
          </div>
                 
          <div class="d-flex justify-content-around bx--btns">

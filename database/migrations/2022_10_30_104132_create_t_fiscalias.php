@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('t_unidad_cargo', function (Blueprint $table) {
+        Schema::create('t_fiscalias', function (Blueprint $table) {
             $table->id();
-
-            $table->string('unidad');
-            $table->string('cargo');
-            $table->BigInteger('id_fiscalia')->unsigned();
-
+            $table->string('departamento');
+            $table->string('denominacion');
             $table->timestamps();
-
-            $table->foreign('id_fiscalia')->references('id')->on('t_fiscalias')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_unidad_cargo');
+        Schema::dropIfExists('t_fiscalias');
     }
 };

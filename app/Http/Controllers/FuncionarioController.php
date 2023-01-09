@@ -11,6 +11,8 @@ use App\Models\Conyugue;
 use App\Models\Consaguinidad;
 use App\Models\MpSiNo;
 use App\Models\ParientesMp;
+use App\Models\Fiscalias;
+use App\Models\UnidadCargo;
 use App\Models\TipoCausalesIncompatibilidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +41,8 @@ class FuncionarioController extends Controller
       list($funcionario, $conyugues,
        $consaguinidades, $afinidades,
        $adopciones, $si_no,
-       $parientes_mp, $causalRespuestas, $tiposCausales) = $this->getDatosFuncionario($ID);
+       $parientes_mp, $causalRespuestas, $tiposCausales,
+       $unidad, $fiscalia) = $this->getDatosFuncionario($ID);
 
       $fileNamePdf = $funcionario->nombres;
       // return view('funcionario.pdf.index',
@@ -47,7 +50,8 @@ class FuncionarioController extends Controller
       //    'adopciones', 'si_no', 'parientes_mp', 'causalRespuestas', 'tiposCausales'));
       $pdf = PDF::loadView(
          'funcionario.pdf.index',
-         compact('funcionario', 'conyugues', 'consaguinidades', 'afinidades', 'adopciones', 'si_no', 'parientes_mp', 'causalRespuestas', 'tiposCausales')
+         compact('funcionario', 'conyugues', 'consaguinidades', 'afinidades', 'adopciones',
+          'si_no', 'parientes_mp', 'causalRespuestas', 'tiposCausales', 'unidad', 'fiscalia')
       );
       return $pdf->download('Declaración jurada de '.$fileNamePdf.'.pdf');
       // return $pdf->stream('Declaración jurada de '.$fileNamePdf.'.pdf');
@@ -58,12 +62,19 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        $usuario = Usuario::all();
-        return view('funcionario.create',compact('usuario'));
+        $fiscalias = Fiscalias::all();
+        $unidades = UnidadCargo::all();
+        
+        return view('funcionario.create')
+                  ->with('fiscalias', $fiscalias)
+                  ->with('unidades', $unidades);
     }
     public function getDatosFuncionario($id){
       $funcionario = Funcionario::find($id);
       $conyugue = Conyugue::select()->where('id_funcionario', '=', $id)->get();
+      $unidad = UnidadCargo::select()->where('id', '=', $funcionario->id_unidad)->first();
+      $fiscalia = Fiscalias::select()->where('id', '=', $funcionario->id_fiscalia)->first();
+
       $consaguinidad = Consaguinidad::select('t_consaguinidad.id','t_consaguinidad.nombres','t_consaguinidad.apellido_paterno',
                                    't_consaguinidad.apellido_materno','p.parentesco')
                                     ->join('t_parentescos as p','t_consaguinidad.id_parentesco','=','p.id')
@@ -81,7 +92,8 @@ class FuncionarioController extends Controller
       $parientes_mp = ParientesMp::select()->where('id_funcionario', '=', $id)->get();
       $causal = Causal::select()->where('id_funcionario', '=', $id)->get();
       $tiposCausales = TipoCausalesIncompatibilidad::all();
-      return [$funcionario, $conyugue, $consaguinidad, $afinidad, $adopcion, $si_no, $parientes_mp, $causal, $tiposCausales];
+      return [$funcionario, $conyugue, $consaguinidad, $afinidad, $adopcion,
+       $si_no, $parientes_mp, $causal, $tiposCausales, $fiscalia, $unidad];
     }
     /**
      * Store a newly created resource in storage.
@@ -122,6 +134,9 @@ class FuncionarioController extends Controller
     public function show($id){
       $funcionario = Funcionario::find($id);
       $conyugue = Conyugue::select()->where('id_funcionario', '=', $id)->get();
+      $unidad = UnidadCargo::select()->where('id', '=', $funcionario->id_unidad)->first();
+      $fiscalia = Fiscalias::select()->where('id', '=', $funcionario->id_fiscalia)->first();
+
       $consaguinidad = Consaguinidad::select('t_consaguinidad.id','t_consaguinidad.nombres','t_consaguinidad.apellido_paterno',
                                    't_consaguinidad.apellido_materno','p.parentesco')
                                     ->join('t_parentescos as p','t_consaguinidad.id_parentesco','=','p.id')
@@ -151,6 +166,8 @@ class FuncionarioController extends Controller
          ->with('si_no', $si_no)
          ->with('parientes_mp', $parientes_mp)
          ->with('causalRespuestas', $causal)
+         ->with('fiscalia', $fiscalia)
+         ->with('unidad', $unidad)
          ->with('tiposCausales', $tiposCausales);
     }
 
@@ -162,7 +179,12 @@ class FuncionarioController extends Controller
      */
     public function edit($id) {
       $funcionario = Funcionario::find($id);
-      return view('funcionario.edit')->with('funcionario', $funcionario);      //forma 2
+      $fiscalias = Fiscalias::all();
+      $unidades = UnidadCargo::all();
+      return view('funcionario.edit')
+            ->with('fiscalias', $fiscalias)
+            ->with('unidades', $unidades)
+            ->with('funcionario', $funcionario);      //forma 2
     }
 
     /**
@@ -185,8 +207,8 @@ class FuncionarioController extends Controller
         $t_funcionario->fecha_nacimiento = $request->fecha_nacimiento;
         $t_funcionario->direccion = $request->direccion;
         $t_funcionario->celular = $request->celular;
-        $t_funcionario->fiscalia_otro = $request->fiscalia_otro;
-        $t_funcionario->unidad = $request->unidad;
+        $t_funcionario->id_fiscalia = $request->id_fiscalia;
+        $t_funcionario->id_unidad = $request->id_unidad;
         $t_funcionario->save();
         return redirect()->action([FuncionarioController::class, 'index']);
     }

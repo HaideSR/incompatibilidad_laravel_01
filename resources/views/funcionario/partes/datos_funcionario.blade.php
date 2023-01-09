@@ -38,7 +38,7 @@
       </div>
       <div class="row">
          <div class="col-4">Fiscalia/Otro</div>
-         <div class="col-8 bold">{{$funcionario->fiscalia_otro}}</div>
+         <div class="col-8 bold">{{$fiscalia->denominacion}}</div>
       </div> 
       <!-- .. -->
    </div>

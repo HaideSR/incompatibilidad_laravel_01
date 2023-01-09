@@ -15,7 +15,9 @@
             </a>
          </div>
       </div>
-         @include('funcionario.partes.datos_funcionario', ['funcionario' => $funcionario])
+         @include('funcionario.partes.datos_funcionario',
+            ['funcionario' => $funcionario, 'fiscalia' => $fiscalia]
+            )
          <div id="multi-step-form-container">
             <ul id="grupotabs" class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
                @include('funcionario.partes.tab_opcion', ['nombre' => 'Datos del conyugue o conviviente', 'nro' => '2'])

@@ -5,13 +5,13 @@
       <div class="card-body">
 
          @if (!Auth::user()->confirmado && !Session::get('isAdmin'))
-            <div class="card text-center mb">
+            {{-- <div class="card text-center mb">
                <div class="card-body">
                   <h5 class="card-title">Verificar correo electrónico</h5>
                   <p class="card-text">Antes de continuar debemos valiadar que su correo le pertenece</p>
                   <a href="#" class="btn btn-warning">Enviar código de verificación</a>
                </div>
-            </div>
+            </div> --}}
          @endif
          @if (Session::get('isAdmin'))
             <a href="{{ route('funcionario.create') }}" class="btn btn-primary">

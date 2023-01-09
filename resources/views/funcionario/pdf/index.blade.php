@@ -10,6 +10,9 @@
 	</head>
 	<body>
       <div class="bx-pdf-print">
+         <div class="pr-marca">
+            <img src="./img/logo-oficial_2.png" alt="Escudo">
+         </div>
          <div class="pr-head">
             <div class="pr-fixed-head text-center">
                <img src="./img/escudo-bolivia.png" class="logo-sup" alt="Escudo">
@@ -64,11 +67,11 @@
                   </tr>
                   <tr>
                      <td>Fiscalía/Otro</td>
-                     <td>{{$funcionario->fiscalia_otro}}</td>
+                     <td>{{$fiscalia->denominacion}}</td>
                   </tr>
                   <tr>
                      <td>Cargo denominación ITEM/CONTRATO</td>
-                     <td>{{$funcionario->unidad}}</td>
+                     <td>{{$unidad->unidad}}</td>
                   </tr>
                   <tr>
                      <td>Fecha registro</td>
@@ -186,6 +189,7 @@
          <div class="pr-bloque">
             <p class="bold">Parte VI: PARIENTES QUE TRABAJAN EN EL MINISTERIO PÚBLICO</p>
             <table>
+               @if($si_no)
                <tbody>
                   <tr>
                      <td>¿Tiene parientes hasta el 2º grado de afinidad que trabajen en el Ministerio Público?</td>
@@ -196,6 +200,7 @@
                      <td>{{$si_no->consaguinidad == 1 ? 'Si' : 'No' }}</td>
                   </tr>
                </tbody>
+               @endif
             </table>
          </div>
          <div class="pr-bloque">
