@@ -1,4 +1,7 @@
-<div class="card mb p">
+<div class="form-step card mb d-show">
+   <span class="step-init-01 form-stepper-circle text-muted">
+      <span>1</span>
+   </span>
    <div class="card-body ">
       <div class="row">
          <div class="col-4">Cédula de indentidad</div>

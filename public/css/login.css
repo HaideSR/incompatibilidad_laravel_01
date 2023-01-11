@@ -78,7 +78,7 @@
 }
 
 .login-form .form-control { 
-   margin-bottom: 30px;
+   margin-bottom: 25px;
    padding: 12px;
 }
 
@@ -95,7 +95,6 @@
 .login-form .btn {
    border-radius: 0;
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-   margin-bottom: 30px;
    width: 100%;
 }
 
@@ -145,4 +144,31 @@
    grid-template-columns: 1fr 1fr;
    min-height: 100vh;
    place-content: center;
+}
+.btn-two-orange{
+   border: solid 2px;
+   font-weight: bold;
+   padding: 12px;
+   border-radius: 0.375rem !important;
+   color: #ff7b00;
+}
+.divider-login{
+   text-align: center;
+   padding: 15px;
+   position: relative;
+}
+.divider-login span{
+   background-color: white;
+   padding: 4px 20px;
+   z-index: 12;
+   position: relative;
+}
+.divider-login::after{
+   content: '';
+   left: 0;
+   top: 50%;
+   height: 2px;
+   width: 100%;
+   background-color: #b1b1b1;
+   position: absolute;
 }

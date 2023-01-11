@@ -35,7 +35,14 @@
                   <div class="form-group">
                      <button class="btn btn-primary btn-block">INGRESAR</button>
                   </div>
-                  <div class="form-group">
+                  <div class="divider-login">
+                     <span>o</span>
+                  </div>
+                  <div class="form-group mb">
+                     <button class="btn btn-outline-warning btn-two-orange">Ingresa con ciudadania digital</button>
+                  </div>
+                  
+                  <div class="mt form-group">
                      <div class="text-center">¿No tienes cuenta? <a href="/registrarme">Registrate</a></div>
                   </div>
                </form>

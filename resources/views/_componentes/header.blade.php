@@ -19,12 +19,7 @@
                <span>Ayuda</span>
             </a>
          </li>
-         <li class="menu-head-item">
-            <a href="#" class="menu-head-item-ac">
-               <span>Acceso con ciudadania digital</span>
-               <i class="icon-arrow_right_alt"></i>
-            </a>
-         </li>
+         
       </ul>
    </div>
    <div>

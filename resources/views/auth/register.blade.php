@@ -43,7 +43,7 @@
                      <strong>{{ $message }}</strong>
                   </span>
                @enderror
-               <div class="form-group">
+               <div class="form-group mb">
                   <button type="submit" class="btn btn-primary btn-block">Registrarme</button>
                </div>
                <div class="form-group">
