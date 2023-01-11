@@ -14,10 +14,10 @@
                <form action="{{ route('login') }}" method="POST" class="login-form" enctype="multipart/form-data">
                   @csrf
                   <div class="form-group">
-                     <input name="email" type="text" class="form-control" placeholder="Email">
+                     <input name="email" type="text" class="form-control" placeholder="Email" required>
                   </div>
                   <div class="form-group">
-                     <input name="password" type="Password" class="form-control" placeholder="Contraseña">
+                     <input name="password" type="Password" class="form-control" placeholder="Contraseña" required>
                   </div>
                   <div class="mb text-end">
                      <a href="#!" class="forgot-password">¿Olvido su contraseña?</a>

@@ -20,13 +20,13 @@
                   <input type="text" class="form-control" placeholder="Nombre">
                </div> --}}
                <div class="form-group">
-                  <input name="email" type="text" class="form-control" placeholder="Email">
+                  <input name="email" type="text" class="form-control" placeholder="Email" required>
                </div>
                <div class="form-group">
-                  <input name="password" type="Password" class="form-control" placeholder="Contraseña">
+                  <input name="password" type="Password" class="form-control" placeholder="Contraseña" required>
                </div>
                <div class="form-group">
-                  <input name="password_confirmation" type="Password" class="form-control" placeholder="Repite contraseña">
+                  <input name="password_confirmation" type="Password" class="form-control" placeholder="Repite contraseña" required>
                </div>
                @error('email')
                   <span class="invalid-feedback block mb" role="alert">
