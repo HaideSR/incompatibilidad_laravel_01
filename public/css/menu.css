@@ -394,3 +394,27 @@ body {
 .open-submenu ~ .sub-menu-list{
    display: block !important;
 }
+
+/*  */
+.menu-head{
+   display: flex;
+   margin-bottom: 0;
+   padding-bottom: 0;
+}
+.menu-head-item{
+   list-style: none;
+   margin: 0 .4rem;
+}
+.menu-head-item a{
+   color: inherit;
+   text-decoration: none;
+   border: solid 2px;
+   padding: 8px;
+   border-radius: 6px;
+   color: #df7300;
+}
+.menu-head-item-ac,
+.menu-head-item a:hover{
+   background-color: #df7300;
+   color: white !important;
+}

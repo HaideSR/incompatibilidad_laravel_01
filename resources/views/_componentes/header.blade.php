@@ -1,5 +1,32 @@
 <header class="header">
-   <div></div>
+   <div>
+      <ul class="menu-head">
+         <li class="menu-head-item">
+            <a href="#">
+               <i class="icon-import_contacts"></i>
+               <span>Reglamento</span>
+            </a>
+         </li>
+         <li class="menu-head-item">
+            <a href="#">
+               <i class="icon-list_alt"></i>
+               <span>Instructivo</span>
+            </a>
+         </li>
+         <li class="menu-head-item">
+            <a href="#">
+               <i class="icon-help_outline"></i>
+               <span>Ayuda</span>
+            </a>
+         </li>
+         <li class="menu-head-item">
+            <a href="#" class="menu-head-item-ac">
+               <span>Acceso con ciudadania digital</span>
+               <i class="icon-arrow_right_alt"></i>
+            </a>
+         </li>
+      </ul>
+   </div>
    <div>
       <div class="dropdown">
          <button class="btn-h-user dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
