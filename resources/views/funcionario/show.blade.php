@@ -12,10 +12,7 @@
                <a href="/funcionario-pdf?&idF={{ request()->funcionario }}" type="button" class="btn btn-outline-danger mr-4">
                   <i class="icon-file-pdf-o"></i>
                </a>
-               <a href="#" class="btn btn-warning">
-                  <span>Aprobacion con ciudadania digital</span>
-                  <i class="icon-arrow_right_alt"></i>
-               </a>
+               
             </div>
          </div>
       </div>

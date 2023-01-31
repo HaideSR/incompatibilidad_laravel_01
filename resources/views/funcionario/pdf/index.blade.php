@@ -76,11 +76,20 @@
                            </tr>
                            <tr>
                               <td>Fiscalía/Otro</td>
-                              <td>{{ $fiscalia->denominacion }}</td>
+                              <td>
+                                 @if($fiscalia)
+                                 {{ $fiscalia->denominacion }}
+                                 @endIf
+                              </td>
                            </tr>
                            <tr>
                               <td>Cargo denominación ITEM/CONTRATO</td>
-                              <td>{{ $unidad->unidad }}</td>
+                              <td>
+                              @if($unidad)   
+                                 {{ $unidad->unidad }}
+                              @endIf
+
+                              </td>
                            </tr>
                            <tr>
                               <td>Fecha registro</td>

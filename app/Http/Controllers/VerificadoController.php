@@ -16,6 +16,37 @@ class VerificadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function showDocs(Request $request, $archivo)
+    {
+        $host = request()->getSchemeAndHttpHost();
+        $url = "{$host}/declaraciones/".$archivo;
+        $fileContents = file_get_contents($url);
+        $base64 = base64_encode($fileContents);
+
+        $data = ["error" => false,
+        "message" => 'Se encontro el archivo.',
+        "response" => [
+            "description" => $archivo,
+            "base64" => $base64,
+        ],
+        "status" => 200,
+        ];
+        return response()->json($data);
+    }
+
+    public function notificationDocs(Request $request,$archivo,$id)
+    {
+        // dd($request);
+        $data = ["error" => false,
+        "message" => 'Se encontro el archivo.',
+        "response" => [
+            "description" => '$archivo',
+        ],
+        "status" => 200,
+        ];
+        return response()->json($data);
+    }
+
     public function index()
     {
         //
@@ -26,7 +57,40 @@ class VerificadoController extends Controller
                                     ->orderBy('id', 'DESC')
                                     ->get();
 
-                                   return view('subir_declaracion.index',['t_estado_declaracion'=>$t_estado_declaracion]);
+                                    $t_estado_declaracion = $t_estado_declaracion->map(function ($item) {
+                                        $item->permiteAprobar = false;
+                                        $item->aprovationUrl = null;
+                                        $binnacleId = session('binnacleId');
+                                        if($item->archivo && $binnacleId){
+                                            $item->permiteAprobar = true;
+                                            $host = request()->getSchemeAndHttpHost();
+                                            // ======url contruida=====
+                                            $urlRedirectClient = $host;
+                                            $urlServiceDocument = $host.'/lecturarDocumento/'.$item->archivo;
+                                            $urlServiceNotif = "{$host}/notificar/aprobacion/".$item->archivo.'/'.$item->id;
+
+                                            // solo tenia q ser estas 2 lineas, pero no tenias ninguno de estoy valores anteriores, yo estoy haciendo cada uno.
+                                            // incluso te pse codigo
+                                            // eso es lo de variables de acceso con ciudadania verdad?
+                                            $urlOrion =env('VUE_APP_C_DIGITAL_URL');
+                                            // si.. la ruta q se arma es la siguiente de abajo... pero ya debias te tener preparado... todos su valores...
+                                            // y pss no habia.. yo termine preparandotelo...
+                                            // si debi insistir en que me revises el codigo, crei que con lo que me habias pedido ya estaba, bueno ni modo
+                                            //mañana ire a decirle al ingeniero que el siguiente semestre nomas le presentare, no te preocuoes ya hiciste mucho la verdad,
+                                            // no imagine que faltaban esa variables.
+
+                                            // solo dile q te retrasaste
+                                            // serena morena, calmanes montes
+                                            //no es eso sino que el ingenieor fue directo y me dijo que eso es lo que era importate a la licenciada mayra debo mostrarle igual
+                                            //para mic arta el uing velasquez dijo que si llebaba la carta todo estaria correcto.
+                                            
+                                            $item->aprovationUrl = "{$urlOrion}/?urlRedirectClient={$urlRedirectClient}&urlServiceDocument={$urlServiceDocument}&urlNotificationDocument={$urlServiceNotif}&binnacleId={$binnacleId}";
+                                            // ===========
+                                        }
+                                        return $item;
+                                    });
+                                        // $url = session('binnacleId');
+                                   return view('subir_declaracion.index', compact('t_estado_declaracion'));
     }
 
     /**

@@ -55,7 +55,14 @@
                      <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar?')"  class="btn btn-sm btn-outline-danger">
                         <i class="icon-delete"></i>
                      </button>
-                  </form> 
+                  </form>
+                  <!-- si permiteAprobar mostrarmos boton de aprrobar -->
+                  @if($estadodeclaracion->permiteAprobar)
+                  <a href="{{$estadodeclaracion->aprovationUrl}}" target="_blank" class="btn btn-sm btn-outline-success">
+                     <i class="icon-load"></i>
+                     Aprobar
+                  </a>
+                  @endIf
             </td>
         </tr>
         @endforeach

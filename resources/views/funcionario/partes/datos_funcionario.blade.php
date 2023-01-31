@@ -39,10 +39,12 @@
          <div class="col-4">Celular</div>
          <div class="col-8 bold">{{$funcionario->celular}}</div>
       </div>
+      @if($fiscalia)
       <div class="row">
          <div class="col-4">Fiscalia/Otro</div>
          <div class="col-8 bold">{{$fiscalia->denominacion}}</div>
       </div> 
+      @endIf
       <!-- .. -->
    </div>
 </div>
