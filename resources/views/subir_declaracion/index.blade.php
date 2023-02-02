@@ -6,13 +6,10 @@
        <a href="{{ route('subir_declaracion.create','index') }}" class="btn btn-primary">
           <i class="icon-add"></i>
           <span>Registrar Formulario</span>
-       </a><a href="#" class="btn btn-warning">
-          <i class="icon-add"></i>
-          <span>Aprobar Formulario</span>
        </a>
-<table class="table table-ligth mt">
+   <table class="table table-ligth mt" >
     <thead class="thealight">
-        <tr>  
+        <tr class="table-primary">  
            <th>Código</th>
             <th>Cedula Identidad</th>
             <th>Fecha</th>
@@ -26,8 +23,7 @@
     </thead>
     <tbody>
         @foreach($t_estado_declaracion as $estadodeclaracion)
-        <tr>
-     
+        <tr class="table-light">
             <td>{{$estadodeclaracion->codigo }}</td>
             <td>{{$estadodeclaracion->numero_ci }}</td>
             <td>{{$estadodeclaracion->fecha}}</td>
@@ -52,15 +48,14 @@
                   <form action="{{ route('subir_declaracion.destroy', $estadodeclaracion->id ) }}" method ="POST" class="inline">
                      @csrf
                      {{ method_field('DELETE') }}
-                     <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar?')"  class="btn btn-sm btn-outline-danger">
+                     <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar?')"  class="btn btn-sm btn-outline-danger" button title="Eliminar">
                         <i class="icon-delete"></i>
                      </button>
                   </form>
                   <!-- si permiteAprobar mostrarmos boton de aprrobar -->
                   @if($estadodeclaracion->permiteAprobar)
-                  <a href="{{$estadodeclaracion->aprovationUrl}}" target="_blank" class="btn btn-sm btn-outline-success">
-                     <i class="icon-load"></i>
-                     Aprobar
+                  <a href="{{$estadodeclaracion->aprovationUrl}}" target="_blank" class="btn btn-sm btn-outline-success" button title="Aprobar">
+                    
                   </a>
                   @endIf
             </td>

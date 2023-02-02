@@ -6,11 +6,14 @@
       <div class="mb">
          <div class="flex-sb">
             <div>
-               <a href="/funcionario/{{ request()->funcionario }}/edit" class="btn btn-outline-primary mr-4">
-                  <i class="icon-create"></i>
+               <a href="/funcionario/{{ request()->funcionario }}/edit" class="btn btn-outline-info mr-4" button title="Editar">
+                  
                </a>
-               <a href="/funcionario-pdf?&idF={{ request()->funcionario }}" type="button" class="btn btn-outline-danger mr-4">
-                  <i class="icon-file-pdf-o"></i>
+               <a href="/funcionario-pdf?&idF={{ request()->funcionario }}" type="button" class="btn btn-outline-danger mr-4" button title="PDF">
+                 
+               </a>
+               <a href="/subir_declaracion" class="btn btn-outline-warning mr-4" button title="Declaraciones">
+                 
                </a>
                
             </div>

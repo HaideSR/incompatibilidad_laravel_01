@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-body">
        <a href="{{ route('conyugue.create','index') }}" class="btn btn-primary">
-          <i class="icon-add"></i>
+          
           <span>Registrar Conyugue</span>
        </a>
 <table class="table table-ligth mt">
