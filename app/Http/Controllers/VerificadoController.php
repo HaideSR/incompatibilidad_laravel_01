@@ -34,23 +34,70 @@ class VerificadoController extends Controller
         return response()->json($data);
     }
 
+    public function verDocumentoAprobado($id){
+
+        $registro = Verificado::find($id);
+        
+        $msAgeticApi = getenv("APP_API_AGETIC_URL");
+        $header = array(
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . getenv("APP_AGETIC_TOKEN")
+        );
+        
+        $host = request()->getSchemeAndHttpHost();
+        $urlServiceDocument = $host.'/api/lecturarDocumento/'.$registro->archivo;
+
+        $url = $msAgeticApi . "/api/services/v1/check";
+        $data = array("urlServiceDocument" => $urlServiceDocument);
+    
+        $options = array(
+          'http' => array(
+            'header'  => implode("\r\n", $header),
+            'method'  => 'POST',
+            'content' => json_encode($data)
+          )
+        );
+        // realizamos a peticion a agetic
+        $context  = stream_context_create($options);
+        $req = file_get_contents($url, false, $context);
+
+        // decodificamos el resutado de la peticion a agetic
+        $result = json_decode($req, true);
+        
+        // asignamos la lista de aprobaciones q tubo el documento
+        $aprobaciones = collect($result['response']['registros']);
+        return view('subir_declaracion.verDocumento', compact('aprobaciones','registro'));
+    }
+
     public function notificationDocs(Request $request,$archivo,$id)
     {
-        // dd($request);
-        $data = ["error" => false,
-        "message" => 'Se encontro el archivo.',
+        $data = (object) $request->responseApprobation;
+        // si aprobado
+        if($data->aceptado){
+            $registro = Verificado::find($id);
+            // entonces cambiamos el estrado del registro del archivo 
+            $registro->estado_aprobacion_cd = true;
+            // y guardamos
+            $registro->save(); 
+        }
+
+        // respuesta que se devuelve despues de aprobar con c.d
+        $response = ["error" => false,
+        "message" => 'Archivo aprobado correctamente',
         "response" => [
-            "description" => '$archivo',
+            "aprobado" => $data->aceptado,
+            "archivo" => $archivo,
+            "registroId" => $id
         ],
         "status" => 200,
         ];
-        return response()->json($data);
+        return response()->json($response);
     }
 
     public function index()
     {
         //
-        $t_estado_declaracion = Verificado::select('t_estado_verificacion.id', 't_estado_verificacion.codigo','f.numero_ci','t_estado_verificacion.fecha'
+        $t_estado_declaracion = Verificado::select('t_estado_verificacion.id','t_estado_verificacion.estado_aprobacion_cd', 't_estado_verificacion.codigo','f.numero_ci','t_estado_verificacion.fecha'
                       ,'md.motivo','t_estado_verificacion.archivo','t_estado_verificacion.estado_proceso')
                                     ->join('t_funcionario as f','t_estado_verificacion.id_funcionario','=','f.id')
                                     ->join('t_motivo_declaracion as md','t_estado_verificacion.id_motivodeclaracion','=','md.id')
@@ -65,9 +112,9 @@ class VerificadoController extends Controller
                                             $item->permiteAprobar = true;
                                             $host = request()->getSchemeAndHttpHost();
                                             // ======url contruida=====
-                                            $urlRedirectClient = $host;
-                                            $urlServiceDocument = $host.'/lecturarDocumento/'.$item->archivo;
-                                            $urlServiceNotif = "{$host}/notificar/aprobacion/".$item->archivo.'/'.$item->id;
+                                            $urlRedirectClient = $host.'/subir_declaracion';
+                                            $urlServiceDocument = $host.'/api/lecturarDocumento/'.$item->archivo;
+                                            $urlServiceNotif = "{$host}/api/notificar/aprobacion/".$item->archivo.'/'.$item->id;
 
                                             // solo tenia q ser estas 2 lineas, pero no tenias ninguno de estoy valores anteriores, yo estoy haciendo cada uno.
                                             // incluso te pse codigo

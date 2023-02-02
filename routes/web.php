@@ -40,8 +40,7 @@ use Illuminate\Http\Request;
 Route::get('/', [LoginController::class, 'loginView'] )->middleware('guest');
 // agregamos 2 rutas, 1 para lecturar archivo, y otro para notificar de la aprovacion,
 //  cada ruta con su respectiva funcion en el controller
-Route::post('/lecturarDocumento/declaraciones/{archivo}',[VerificadoController::class, 'showDocs'])->name('showDocs');
-Route::post('/notificar/aprobacion/declaraciones/{archivo}/{id}',[VerificadoController::class, 'notificationDocs'])->name('notificationDocs');
+Route::get('/ver/documento/aprobado/{archivo}',[VerificadoController::class, 'verDocumentoAprobado'])->name('verDocumentoAprobado');
 Route::get('/login', [LoginController::class, 'loginView'] )->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'] )->name('authenticate')->middleware('guest');
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VerificadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/lecturarDocumento/declaraciones/{archivo}',[VerificadoController::class, 'showDocs'])->name('showDocs');
+Route::post('/notificar/aprobacion/declaraciones/{archivo}/{id}',[VerificadoController::class, 'notificationDocs'])->name('notificationDocs');
+

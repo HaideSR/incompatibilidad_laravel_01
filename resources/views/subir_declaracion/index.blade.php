@@ -58,6 +58,14 @@
                     
                   </a>
                   @endIf
+                  <br />
+                  @if($estadodeclaracion->estado_aprobacion_cd)
+                     <span class="text-success"> Documento Aprobado</span>
+                     <a href="{{ route('verDocumentoAprobado', $estadodeclaracion->id) }}" class="btn btn-sm btn-outline-primary">
+                        ver aprobaciones
+                  </a> 
+                  @endIf
+
             </td>
         </tr>
         @endforeach
