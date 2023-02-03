@@ -7,13 +7,13 @@
          <div class="flex-sb">
             <div>
                <a href="/funcionario/{{ request()->funcionario }}/edit" class="btn btn-outline-info mr-4" button title="Editar">
-                  
+               <i class="icon-create"></i>
                </a>
                <a href="/funcionario-pdf?&idF={{ request()->funcionario }}" type="button" class="btn btn-outline-danger mr-4" button title="PDF">
-                 
+               <i class="icon-file-pdf-o"></i>
                </a>
                <a href="/subir_declaracion" class="btn btn-outline-warning mr-4" button title="Declaraciones">
-                 
+               <i class="icon-library_add"></i>
                </a>
                
             </div>

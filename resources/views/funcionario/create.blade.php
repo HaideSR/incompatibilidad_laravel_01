@@ -16,7 +16,20 @@
             </div>
             <div class="col-md-4">
                <label for="f3" class="form-label">Expedido</label>
-               <input type="text" name="expedido" class="form-control" id="f3">
+              
+               <select name="select" class="form-control" id="f3">
+                  <option value="">---Seleccionar---</option>
+                  <option value="TJ">Tarija</option>
+                  <option value="PT">Potosi</option>
+                  <option value="Sc">Santa Cruz</option>
+                  <option value="OR">Oruro</option>
+                  <option value="BE">Beni</option>
+                  <option value="PD">Pando</option>
+                  <option value="LP">La Paz</option>
+                  <option value="CH">Chuquisaca</option>
+                  <option value="CB">Cochabamba</option>
+               </select>
+
             </div>
             <div class="col-md-6">
                <label for="f4" class="form-label">Apellido paterno</label>
