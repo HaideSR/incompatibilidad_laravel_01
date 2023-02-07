@@ -5,7 +5,7 @@
     <div class="card-body">
        <a href="{{ route('unidad_cargo.create','index') }}" class="btn btn-primary">
           <i class="icon-add"></i>
-          <span>Registrar Unidad Cargo</span>
+          <span></span>
        </a>
 <table class="table table-ligth mt">
     <thead class="thealight">

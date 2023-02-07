@@ -15,7 +15,7 @@ class FiscaliasController extends Controller
     public function index()
     {
         //
-        $datos['t_fiscalias']=Fiscalias::paginate(10);
+        $datos['t_fiscalias']=Fiscalias::paginate(20);
 
         return view('fiscalias.index', $datos);
     }

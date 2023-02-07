@@ -5,7 +5,7 @@
     <div class="card-body">
        <a href="{{ route('grado_parentesco.create','index') }}" class="btn btn-primary">
           <i class="icon-add"></i>
-          <span>Registrar Grado  Parentesco</span>
+          <span></span>
        </a>
 <table class="table table-ligth mt">
     <thead class="thealight">

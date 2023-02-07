@@ -5,7 +5,7 @@
     <div class="card-body">
        <a href="{{ route('subir_declaracion.create','index') }}" class="btn btn-primary">
           <i class="icon-add"></i>
-          <span>Registrar Formulario</span>
+          <span></span>
        </a>
    <table class="table table-ligth mt" >
     <thead class="thealight">

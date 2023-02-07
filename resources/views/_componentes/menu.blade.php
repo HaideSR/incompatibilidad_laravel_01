@@ -62,18 +62,25 @@
                      <span class="menu-icon">
                         <i class="icon-settings"></i>
                      </span>
-                     <span class="menu-title">Configuración datos</span>
+                     <span class="menu-title">CONFIGURACION DE DATOS</span>
                   </a>
                   <div class="sub-menu-list">
                      <ul>
                         <li class="menu-item">
                            <a href="/fiscalias">
+                           <span class="menu-icon">
+                           <i  class="icon-home"></i>
+                           </span>
+                              
                               <span class="menu-title">Fiscalias</span>
                            </a>
                         </li>
                         <li class="menu-item">
-                           <a href="/parentesco">
-                              <span class="menu-title">Parentescos</span>
+                           <a href="/parentesco" >
+                           <span class="menu-icon">
+                           <i class="icon-family_restroom"></i>
+                           </span>
+                           <span class="menu-title">Parentesco</span>
                            </a>
                         </li>
                         <li class="menu-item">

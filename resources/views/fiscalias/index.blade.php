@@ -5,7 +5,7 @@
     <div class="card-body">
        <a href="{{ route('fiscalias.create','index') }}" class="btn btn-primary">
           <i class="icon-add"></i>
-          <span>Registrar Fiscalia</span>
+          <span></span>
        </a>
 <table class="table table-ligth mt">
     <thead class="thealight">
