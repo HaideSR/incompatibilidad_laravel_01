@@ -7,12 +7,13 @@
          <i class="icon-add"></i>
          <span></span>
       </a>
-<table class="table table-ligth mt">
+      <a href="/tipo_parentesco" class="btn btn-primary">Tipo de parentesco</a>
+      <a href="/grado_parentesco" class="btn btn-primary">Grado de parentesco</a>
+   <table class="table table-ligth mt">
     <thead class="thealight">
         <tr> 
-      
             <th>Parentesco</th>
-            <th>Tipo de Parentesco</th>
+            <th>Tipo de parentesco</th>
             <th>Grado</th>
             <th>Acciones</th>
             

@@ -83,24 +83,21 @@
                            <span class="menu-title">Parentesco</span>
                            </a>
                         </li>
+                      
                         <li class="menu-item">
-                           <a href="/grado_parentesco">
-                              <span class="menu-title">Grado/Parentesco</span>
+                           <a href="/tipos_causal_incompatibilidad" >
+                              <span class="menu-icon">
+                              <i class=""></i>
+                              </span>
+                              <span class="menu-title">Tipos de Causales</span>
                            </a>
                         </li>
                         <li class="menu-item">
-                           <a href="/tipo_parentesco">
-                              <span class="menu-title">Tipo/Parentesco</span>
-                           </a>
-                        </li>
-                        <li class="menu-item">
-                           <a href="/tipos_causal_incompatibilidad">
-                              <span class="menu-title">Tipos Causales</span>
-                           </a>
-                        </li>
-                        <li class="menu-item">
-                           <a href="/motivo_declaracion">
-                              <span class="menu-title">Motivos Declaración</span>
+                           <a href="/motivo_declaracion" >
+                              <span class="menu-icon">
+                              <i class=""></i>
+                              </span>
+                              <span class="menu-title">Motivos de Declaracion</span>
                            </a>
                         </li>
                      </ul>
