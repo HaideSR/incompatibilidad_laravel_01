@@ -172,3 +172,26 @@
    background-color: #b1b1b1;
    position: absolute;
 }
+
+
+@media (max-width: 680px) {
+   .box-log-grid{
+      grid-template-columns: 1fr;
+   }
+   .slider-feature-card{
+      display: none;
+   }
+   .login-box{
+      padding: 10px;
+      margin: 20px 0;
+      border-radius: 10px;
+   }
+   .box-log-home{
+      margin: 0;
+   }
+}
+@media (max-width: 480px) {
+   .login-box::after{
+      background-position: bottom;
+   }
+}

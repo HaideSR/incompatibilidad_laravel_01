@@ -1,5 +1,8 @@
 <header class="header">
-   <div>
+   <div class="flex flex-center-ai">
+      <div id="iconMenu" class="ic--menu-icon">
+         <i class="icon-menu"></i>
+      </div>
       <ul class="menu-head">
          <li class="menu-head-item">
             <a href="http://declaracionjurada.fiscalia.gob.bo/reglamento.pdf">
@@ -48,4 +51,15 @@
          </ul>
       </div>
    </div>
+   <script>
+      const side = document.getElementById('sidebar')
+      const iconMenu = document.getElementById('iconMenu')
+      // iconMenu.addEventListener('click', {
+      // })
+      if(iconMenu){
+         iconMenu.addEventListener('click', e => { 
+            side.classList.toggle('min-sidebar')
+         })
+      }
+   </script>
 </header>

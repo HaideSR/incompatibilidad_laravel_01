@@ -48,7 +48,17 @@
          </main>
          <div class="overlay"></div>
       </div>
+      <div id="mask" class="mask-sidebar"></div>
    </div>
 </body>
-
+<script>
+   const sidebar = document.getElementById('sidebar')
+   const mask = document.getElementById('mask') 
+   mask.addEventListener('click', e => {
+      sidebar.classList.remove('min-sidebar')
+   })
+   // sidebar.addEventListener('click', e => {
+   //    console.log(e);
+   // })
+</script>
 </html>
