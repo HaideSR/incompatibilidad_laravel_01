@@ -42,7 +42,10 @@
                      <span>o</span>
                   </div>
                   <div class="form-group mb">
-                     <a class="btn btn-outline-warning btn-two-orange" href="https://orion.fiscalia.gob.bo/?urlRedirectLogin=http://declaracionjurada-mp.fiscalia.gob.bo">Ingresa con ciudadania digital</a>
+                     <a class="btn btn-outline-warning btn--cd" href="https://orion.fiscalia.gob.bo/?urlRedirectLogin=http://declaracionjurada-mp.fiscalia.gob.bo">
+                        <img src="../img/logo-ciudadania-digital.png" alt="">
+                        <span>Ingresa con ciudadania digital</span>
+                     </a>
                   </div>
                   
                   <div class="mt form-group">

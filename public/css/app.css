@@ -160,3 +160,28 @@ input[type="checkbox"] {
    align-items: center;
    border-radius: 0 .375rem .375rem 0;
 }
+
+.btn--cd{
+   display: flex;
+   align-items: center;
+   padding: 10px !important;
+   border-color: #4444aa !important;
+   border: solid 2px;
+   font-weight: bold;
+   color: #4444aa;
+   border-radius: 0.375rem !important;
+}
+.btn--cd:hover{
+   background-color: #4444aa;
+   color: white;
+}
+.btn--cd img{
+   width: 40px;
+   margin-right: 6px;
+}
+.btn--cd:hover img{
+   filter: invert(1);
+}
+.btn--cd span{
+   font-size: .9rem;
+}
