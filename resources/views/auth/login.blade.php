@@ -17,11 +17,10 @@
                      <input name="email" type="text" class="form-control" placeholder="Email" required> 
                   </div>
                   <div class="form-group">
-                     <div class="flex flex-center-ai">
-                     <input name="password" type="password" class="form-control input-password" placeholder="Contraseña" id="password" required>
-                     <i class="icon-remove_red_eye" id="eye"></i>
+                     <div class="flex flex-center-ai box-input">
+                        <input name="password" type="password" class="form-control" placeholder="Contraseña" id="password" required>
+                        <i class="icon-remove_red_eye" id="eye"></i>
                      </div>
-                     
                   </div>
                   <div class="mb text-end">
                      <a href="/restablecer-password" class="forgot-password">¿Olvido su contraseña?</a>

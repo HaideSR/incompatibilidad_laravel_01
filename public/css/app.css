@@ -140,6 +140,23 @@ input[type="checkbox"] {
 .mx-38x{
    max-width: 380px;
 }
-.input-password{
-    margin-bottom: 0 !important;
+.box-input {
+   margin-bottom: 12px;
+   position: relative;
+}
+.box-input input{
+   margin-bottom: 0 !important;
+   padding-right: 20px;
+}
+#eye{
+   position: absolute;
+   right: 0;
+   height: 100%;
+   top: 0;
+   background-color: white;
+   border: 1px solid #ced4da;
+   padding: 12px;
+   display: flex;
+   align-items: center;
+   border-radius: 0 .375rem .375rem 0;
 }
