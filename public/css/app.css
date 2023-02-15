@@ -140,3 +140,6 @@ input[type="checkbox"] {
 .mx-38x{
    max-width: 380px;
 }
+.input-password{
+    margin-bottom: 0 !important;
+}

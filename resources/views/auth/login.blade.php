@@ -14,10 +14,14 @@
                <form action="{{ route('login') }}" method="POST" class="login-form" enctype="multipart/form-data">
                   @csrf
                   <div class="form-group">
-                     <input name="email" type="text" class="form-control" placeholder="Email" required>
+                     <input name="email" type="text" class="form-control" placeholder="Email" required> 
                   </div>
                   <div class="form-group">
-                     <input name="password" type="Password" class="form-control" placeholder="Contraseña" required>
+                     <div class="flex flex-center-ai">
+                     <input name="password" type="password" class="form-control input-password" placeholder="Contraseña" id="password" required>
+                     <i class="icon-remove_red_eye" id="eye"></i>
+                     </div>
+                     
                   </div>
                   <div class="mb text-end">
                      <a href="/restablecer-password" class="forgot-password">¿Olvido su contraseña?</a>
@@ -56,4 +60,19 @@
          </div>
       </div>
    </div>
+   
+   <script>
+    const password = document.getElementById('password')
+    const eye = document.getElementById('eye')
+    if(eye){
+         eye.addEventListener('click', e => { 
+          if(password.type == 'password'){
+                password.type = 'text'
+          }  else{
+               password.type = 'password'
+                  }
+         }) 
+      }
+
+   </script>
 @endsection
