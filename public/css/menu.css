@@ -486,4 +486,7 @@ body {
    .menu-head-item{
       display: flex;
    }
+   .layout .content{
+      padding: 12px;
+   }
 }

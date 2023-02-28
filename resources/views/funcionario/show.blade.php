@@ -45,6 +45,10 @@
                @endif
                @include('funcionario.partes.seccion_07', ['causalRespuestas' => $causalRespuestas, 'tiposCausales' => $tiposCausales, 'nro'=> '7'])
             </div>
+            <div class="alert alert-warning align-items-center mt" id="alert-n" role="alert" style="display: none">
+               <i class="icon-warning"></i>
+               <span>Debe llenar el formulario antes de continuar</span>
+            </div>
             <div class="d-flex justify-content-around bx--btns">
                <button id="prev" class="btn btn-primary">
                   <i class="icon-arrow_back"></i>
@@ -56,7 +60,6 @@
                </button>
             </div>
          </div>
-      
    </div>
 </div>
 @stop

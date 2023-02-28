@@ -1,17 +1,4 @@
-{{-- <div class="accordion-item">
-   <h2 class="accordion-header" id="heading-{{ $nro }}">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-         data-bs-target="#collapse-{{ $nro }}" aria-expanded="false" aria-controls="collapse-{{ $nro }}">
-         <span>Parte {{ $nro }}: </span>
-         <b class="ml">Causal de Incompatibilidad en el Ministero Público</b>
-      </button>
-   </h2>
-   <div id="collapse-{{ $nro }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ $nro }}"
-      data-bs-parent="#accordionExample">
-   </div>
-</div> --}}
-
-<section class="form-step">
+<section id="sec-7" data-empty="{{$tiposCausales->isEmpty() ? 'true':''}}"  class="form-step">
    <div class="accordion-body">
       <table class="table table-ligth">
          <thead class="thealight">
