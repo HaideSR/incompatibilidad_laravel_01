@@ -32,6 +32,10 @@
          <div class="col-8 bold">{{$funcionario->fecha_nacimiento}}</div>
       </div>
       <div class="row">
+         <div class="col-4">Estado Civil</div>
+         <div class="col-8 bold">{{$funcionario->estado_civil}}</div>
+      </div>
+      <div class="row">
          <div class="col-4">Dirección</div>
          <div class="col-8 bold">{{$funcionario->direccion}}</div>
       </div>
