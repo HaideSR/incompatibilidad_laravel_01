@@ -100,6 +100,10 @@ class LoginController extends Controller
                // ya tenemos el binnacleId en una session iniciada
                return redirect('/inicio');
             } else {
+               $existeUsuario = User::where('email', $ciudadanoDigital->email)->first();
+               if($existeUsuario){
+                  $newUser = $existeUsuario;
+               }else{
                // registramos un user y su funcioanrio con los datos q agetic devuelva, siempre y cuando no exista
                $newUser = new User();
                $newUser->email = $ciudadanoDigital->email;
@@ -112,7 +116,7 @@ class LoginController extends Controller
                $newUser->confirmado = 1;
                $newUser->save();
 
-
+               }
                // se entiende??
                // vamos a autoregistrar para aquellos que no existen
                //ok, luego con eso ya piodemos hacer lo de la aprobacion?

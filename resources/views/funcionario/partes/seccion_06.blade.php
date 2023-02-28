@@ -1,15 +1,4 @@
-{{-- <div class="accordion-item">
-    <h2 class="accordion-header" id="heading-{{$nro}}">
-       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$nro}}" aria-expanded="false" aria-controls="collapse-{{$nro}}">
-          <b class="ml">Detallar parientes hasta el 4º grado de Consanguinidad y 2º grado de afinidad que trabajan en el Ministerio Públicio</b>
-       </button>
-    </h2>
-    <div id="collapse-{{$nro}}" class="accordion-collapse collapse" aria-labelledby="heading-{{$nro}}" data-bs-parent="#accordionExample">
-       
-    </div>
- </div> --}}
- 
-<section class="form-step">
+<section id="sec-7" data-empty="{{$parientes_mp->isEmpty() ? 'true':''}}" class="form-step">
    <div class="accordion-body">
       <table class="table table-ligth">
          <thead class="thealight">

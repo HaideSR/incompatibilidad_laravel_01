@@ -4,6 +4,7 @@ const grupos  = document.getElementById('grupos')?.children
 const tabs    = document.getElementById('grupotabs')?.children
 const totalGrupos = grupos ? grupos.length : 0
 const cantTabs = tabs ? tabs.length : 0
+const alert = document.getElementById('alert-n')
 
 for (let j = 0; j < cantTabs; j++) {
    const item = tabs[j].children[0]
@@ -41,9 +42,11 @@ function showItem(indexShow){
       if(i+1 == indexShow){
          grupos[i].classList.add('d-show')
          tabs[i].classList.add('form-stepper-active')
+         //estado
+         activeBTN(i)
+         
       }
    }
-   
 }
 
 function validarBtns(indexShow){
@@ -69,6 +72,9 @@ function actualIndex(){
 function initShow(){
    const nroIndex = actualIndex()
    showItem(nroIndex)
+   if(grupos.length){
+      validarOpciones()
+   }
 }
 
 function buscarTabItem(itemClick){
@@ -80,3 +86,33 @@ function buscarTabItem(itemClick){
 }
 
 initShow();
+
+function validarOpciones(){
+   let items = [...grupos]
+   items.forEach((el, index) => {
+      let estado = el.dataset.empty
+      if(estado === 'true'){
+         console.log(estado);
+         tabs[index+1]?.classList.add('op-disabled')
+      }
+   });
+}
+
+function activeBTN(i){
+   let estado = grupos[i].dataset.empty
+   if(estado === 'true'){
+      nextBtn.classList.add('op-disabled')
+      alert.style.display = 'block'
+   }else{
+      alert.style.display = 'none'
+      nextBtn.classList.remove('op-disabled')
+   }
+   if(i == 5){
+      alert.style.display = 'none'
+   }
+}
+
+// let estadoNext = items[index-1].dataset.empty
+      // if(estadoNext === 'true'){
+         // nextBtn.classList.add('op-disabled')
+      // }

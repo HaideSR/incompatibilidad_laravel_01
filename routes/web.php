@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FiscaliasController;
+use App\Http\Controllers\UnidadesController;
+use App\Http\Controllers\CargosController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\GradosController;
 use App\Http\Controllers\TipoParentescoController;
@@ -78,6 +80,10 @@ Route::middleware(['web', 'auth'])->group( function() {
    
    //ruta de fiscalias
    Route::resource('fiscalias',FiscaliasController::class);
+
+   Route::resource('unidades', UnidadesController::class);
+
+   Route::resource('cargos', CargosController::class);
    
    //ruta de conyugue
    Route::resource('conyugue',ConyugueController::class);

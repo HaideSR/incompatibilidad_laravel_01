@@ -1,15 +1,4 @@
-{{-- <div class="accordion-item">
-   <h2 class="accordion-header" id="heading-{{$nro}}">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$nro}}" aria-expanded="false" aria-controls="collapse-{{$nro}}">
-         <span>Parte {{$nro}}: </span>
-         <b class="ml">Relaciones de parentesco por consanguinidad</b>
-      </button>
-   </h2>
-   <div id="collapse-{{$nro}}" class="accordion-collapse collapse" aria-labelledby="heading-{{$nro}}" data-bs-parent="#accordionExample">
-       
-   </div>
-</div> --}}
-<section class="form-step">
+<section id="sec-3" class="form-step" data-empty="{{$consaguinidades->isEmpty() ? 'true':''}}">
    <div class="accordion-body">
       <table class="table">
          <thead>
@@ -47,7 +36,7 @@
             @endforeach
          </tbody>
       </table>
-      <a href="/consaguinidad/create?&idF={{request()->funcionario}}" class="btn   btn-outline-primary">
+      <a href="/consaguinidad/create?&idF={{request()->funcionario}}" class="btn btn-outline-primary">
          <i class="icon-add_circle"></i>
          <span>Agregar Parientes</span>
       </a>

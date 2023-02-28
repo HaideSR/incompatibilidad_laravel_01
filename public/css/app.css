@@ -185,3 +185,10 @@ input[type="checkbox"] {
 .btn--cd span{
    font-size: .9rem;
 }
+.op-disabled{
+   opacity: .6;
+   pointer-events: none;
+}
+.princ-first{
+   padding: 2rem;
+}

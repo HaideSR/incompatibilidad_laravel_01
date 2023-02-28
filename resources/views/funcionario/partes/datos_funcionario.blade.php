@@ -2,7 +2,7 @@
    <span class="step-init-01 form-stepper-circle text-muted">
       <span>1</span>
    </span>
-   <div class="card-body ">
+   <div class="card-body princ-first">
       <div class="row">
          <div class="col-4">Cédula de indentidad</div>
          <div class="col-8 bold">{{$funcionario->numero_ci}}</div>

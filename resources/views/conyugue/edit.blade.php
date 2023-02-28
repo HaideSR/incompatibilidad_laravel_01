@@ -17,7 +17,19 @@
          </div>
          <div class="col-md-4">
             <label for="f3" class="form-label">Expedido</label>
-            <input type="text" name="expedido" class="form-control" id="f3" value="{{ $t_conyugue->expedido }}" required>
+            {{-- <input type="text" name="expedido" class="form-control" id="f3" value="{{ $t_conyugue->expedido }}" required> --}}
+            <select name="expedido" class="form-control" value="{{ $funcionario->expedido }}" id="f3">
+               <option value="">--Seleccionar--</option>
+               <option @selected( $t_conyugue->expedido == 'TJ') value="TJ">Tarija</option>
+               <option @selected( $t_conyugue->expedido == 'PT') value="PT">Potosi</option>
+               <option @selected( $t_conyugue->expedido == 'SC') value="SC">Santa Cruz</option>
+               <option @selected( $t_conyugue->expedido == 'OR') value="OR">Oruro</option>
+               <option @selected( $t_conyugue->expedido == 'BE') value="BE">Beni</option>
+               <option @selected( $t_conyugue->expedido == 'PD') value="PD">Pando</option>
+               <option @selected( $t_conyugue->expedido == 'LP') value="LP">La Paz</option>
+               <option @selected( $t_conyugue->expedido == 'CH') value="CH">Chuquisaca</option>
+               <option @selected( $t_conyugue->expedido == 'CB') value="CB">Cochabamba</option>
+            </select>
          </div>
          <div class="col-md-4">
             <label for="f4" class="form-label">Apellido paterno</label>
