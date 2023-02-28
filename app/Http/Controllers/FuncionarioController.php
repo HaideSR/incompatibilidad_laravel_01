@@ -12,7 +12,8 @@ use App\Models\Consaguinidad;
 use App\Models\MpSiNo;
 use App\Models\ParientesMp;
 use App\Models\Fiscalias;
-use App\Models\UnidadCargo;
+use App\Models\Cargos;
+use App\Models\Unidades;
 use App\Models\TipoCausalesIncompatibilidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,16 +73,18 @@ class FuncionarioController extends Controller
     public function create()
     {
         $fiscalias = Fiscalias::all();
-        $unidades = UnidadCargo::all();
+        $unidades = Unidades::all();
+        $cargos = Cargos::all();
         
         return view('funcionario.create')
                   ->with('fiscalias', $fiscalias)
+                  ->with('cargos', $cargos)
                   ->with('unidades', $unidades);
     }
     public function getDatosFuncionario($id){
       $funcionario = Funcionario::find($id);
       $conyugue = Conyugue::select()->where('id_funcionario', '=', $id)->get();
-      $unidad = UnidadCargo::select()->where('id', '=', $funcionario->id_unidad)->first();
+      $unidad = Unidades::select()->where('id', '=', $funcionario->id_unidad)->first();
       $fiscalia = Fiscalias::select()->where('id', '=', $funcionario->id_fiscalia)->first();
 
       $consaguinidad = Consaguinidad::select('t_consaguinidad.id','t_consaguinidad.nombres','t_consaguinidad.apellido_paterno',
@@ -143,7 +146,7 @@ class FuncionarioController extends Controller
     public function show($id){
       $funcionario = Funcionario::find($id);
       $conyugue = Conyugue::select()->where('id_funcionario', '=', $id)->get();
-      $unidad = UnidadCargo::select()->where('id', '=', $funcionario->id_unidad)->first();
+      $unidad = Unidades::select()->where('id', '=', $funcionario->id_unidad)->first();
       $fiscalia = Fiscalias::select()->where('id', '=', $funcionario->id_fiscalia)->first();
 
       $consaguinidad = Consaguinidad::select('t_consaguinidad.id','t_consaguinidad.nombres','t_consaguinidad.apellido_paterno',
@@ -189,7 +192,7 @@ class FuncionarioController extends Controller
     public function edit($id) {
       $funcionario = Funcionario::find($id);
       $fiscalias = Fiscalias::all();
-      $unidades = UnidadCargo::all();
+      $unidades = Unidades::all();
       return view('funcionario.edit')
             ->with('fiscalias', $fiscalias)
             ->with('unidades', $unidades)

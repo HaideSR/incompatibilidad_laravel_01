@@ -48,14 +48,14 @@
                </li>
 
                @if (Session::get('isAdmin'))
-                  <li class="menu-item">
+                  {{-- <li class="menu-item">
                      <a href="/unidad_cargo">
                         <span class="menu-icon">
                            <i class="icon-assignment_ind"></i>
                         </span>
                         <span class="menu-title">Unidad Cargo</span>
                      </a>
-                  </li>
+                  </li> --}}
 
                   <li class="menu-item sub-menu">
                      <a href="#" class="item-submenu">
@@ -71,8 +71,23 @@
                                  <span class="menu-icon">
                                     <i class="icon-home"></i>
                                  </span>
-
                                  <span class="menu-title">Fiscalias</span>
+                              </a>
+                           </li>
+                           <li class="menu-item">
+                              <a href="/unidades">
+                                 <span class="menu-icon">
+                                    <i class="icon-view_compact"></i>
+                                 </span>
+                                 <span class="menu-title">Unidades</span>
+                              </a>
+                           </li>
+                           <li class="menu-item">
+                              <a href="/cargos">
+                                 <span class="menu-icon">
+                                    <i class="icon-work"></i>
+                                 </span>
+                                 <span class="menu-title">Cargos</span>
                               </a>
                            </li>
                            <li class="menu-item">

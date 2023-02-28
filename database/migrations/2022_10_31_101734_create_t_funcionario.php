@@ -25,12 +25,16 @@ return new class extends Migration
             $table->string('direccion')->nullable();
             $table->string('celular')->nullable();
             $table->string('fecha_registro');
+            $table->string('firma_id')->nullable();
+            $table->string('estado_civil');
             $table->BigInteger('id_usuario')->unsigned();
             $table->BigInteger('id_unidad')->nullable()->unsigned();
+            $table->BigInteger('id_cargo')->nullable()->unsigned();
             $table->BigInteger('id_fiscalia')->nullable()->unsigned();
             $table->timestamps();
             $table->foreign('id_usuario')->references('id')->on('t_usuarios')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_unidad')->references('id')->on('t_unidad_cargo')->onDelete('cascade');
+            $table->foreign('id_unidad')->references('id')->on('t_unidades')->onDelete('cascade');
+            $table->foreign('id_cargo')->references('id')->on('t_cargos')->onDelete('cascade');
             $table->foreign('id_fiscalia')->references('id')->on('t_fiscalias')->onDelete('cascade');
         });
     }
