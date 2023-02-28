@@ -71,6 +71,7 @@ class LoginController extends Controller
             // si existe funcionario con ese ci. entonces continua, caso contrario vuelve a login
 
             $funcionario = Funcionario::where('numero_ci', $documento_identidad->numero_documento)->with('user')->first();
+            
 
             // no cumple esta condicion
             // dd($funcionario);
@@ -103,7 +104,8 @@ class LoginController extends Controller
                $newUser = new User();
                $newUser->email = $ciudadanoDigital->email;
                $names = (object) $ciudadanoDigital->nombre;
-               $newUser->nombre  = $names->nombres . " " . $names->primer_apellido . " " . $names->segundo_apellido;
+               $newUser->nombre  = $names->nombres . " " . $names->primer_apellido . " " .
+                                   $names->segundo_apellido;
                $newUser->password = '123456789';
                $newUser->nivel = 'FUNCIONARIO';
                $newUser->estado = 1;
