@@ -64,7 +64,7 @@
                            </tr>
                            <tr>
                               <td>Estado Civil</td>
-                              <td>*</td>
+                              <td>{{ $funcionario->estado_civil }}</td>
                            </tr>
                            <tr>
                               <td>Dirección</td>
