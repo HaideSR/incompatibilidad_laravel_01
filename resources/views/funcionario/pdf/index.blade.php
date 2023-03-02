@@ -83,12 +83,19 @@
                               </td>
                            </tr>
                            <tr>
-                              <td>Cargo denominación ITEM/CONTRATO</td>
+                              <td>Unidad</td>
                               <td>
                               @if($unidad)   
-                                 {{ $unidad->unidad }}
+                                 {{ $unidad->nombre }}
                               @endIf
-
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Cargo denominación ITEM/CONTRATO</td>
+                              <td>
+                              @if($cargo)   
+                                 {{ $cargo->nombre }}
+                              @endIf
                               </td>
                            </tr>
                            <tr>

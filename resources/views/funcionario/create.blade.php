@@ -84,7 +84,7 @@
             </div>
             <div class="col-md-4">
                <label for="f9" class="form-label">Cargo</label>
-               <select name="id_unidad" id="inputFiscalia_id" class="form-control" id="f3" >
+               <select name="id_cargo" id="inputFiscalia_id" class="form-control" id="f3" >
                   <option value="">--Selecciona cargo--</option>
                   @foreach($cargos as $cargo)
                   <option value="{{$cargo['id']}}">{{$cargo['nombre']}}</option>
