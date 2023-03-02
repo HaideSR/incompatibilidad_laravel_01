@@ -49,6 +49,18 @@
          <div class="col-8 bold">{{$fiscalia->denominacion}}</div>
       </div> 
       @endIf
+      @if($unidad)
+      <div class="row">
+         <div class="col-4">Unidad</div>
+         <div class="col-8 bold">{{$unidad->nombre}}</div>
+      </div>
+      @endIf
+      @if($cargo)
+      <div class="row">
+         <div class="col-4">Cargo</div>
+         <div class="col-8 bold">{{$cargo->nombre}}</div>
+      </div> 
+      @endIf
       <!-- .. -->
    </div>
 </div>

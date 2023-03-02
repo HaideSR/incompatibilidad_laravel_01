@@ -84,7 +84,15 @@
                @endforeach
            </select>
          </div>
-                
+         <div class="col-md-4">
+            <label for="f33" class="form-label">Cargo</label>
+            <select name="id_cargo" id="inputFiscalia_id" class="form-control" id="f33" >
+               <option value="">--Selecciona cargo--</option>
+               @foreach($cargos as $cargo)
+               <option value="{{$cargo['id']}}" @selected( $cargo['id'] == $funcionario['id_cargo'])>{{$cargo['nombre']}}</option>
+               @endforeach
+           </select>
+         </div>
          <div class="d-flex justify-content-around bx--btns">
             <a href="{{ URL::previous() }}" class="btn btn-light">Cancelar</a>
             <button class="btn btn-primary" type="submit">Registrar </button>
