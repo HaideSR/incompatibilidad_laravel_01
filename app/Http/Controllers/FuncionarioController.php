@@ -27,25 +27,25 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request){
-         $ci = $request->get('ci');
-         if($ci){
-            // $funcionarios = Funcionario::where("numero_ci", "LIKE", "%{$ci}%")
-            $funcionarios = Funcionario::select('t_funcionario.id','t_funcionario.numero_ci','t_funcionario.complemento'
-               ,'t_funcionario.expedido','t_funcionario.nombres','t_funcionario.apellido_paterno',
-               't_funcionario.apellido_materno')
-               ->where("t_funcionario.numero_ci", "LIKE", "%{$ci}%")
-               ->join('t_usuarios as us','t_funcionario.id_usuario','=','us.id')
-               ->paginate(10); 
-            return view('funcionario.index', compact('funcionarios'));
-         }
-        $funcionarios = Funcionario::select('t_funcionario.id','t_funcionario.numero_ci','t_funcionario.complemento'
-        ,'t_funcionario.expedido','t_funcionario.nombres','t_funcionario.apellido_paterno',
-        't_funcionario.apellido_materno')
-        ->join('t_usuarios as us','t_funcionario.id_usuario','=','us.id')
-        ->paginate(10);
-        return view('funcionario.index', compact('funcionarios'));
-    }
+   public function index(Request $request){
+      $ci = $request->get('ci');
+      if($ci){
+         // $funcionarios = Funcionario::where("numero_ci", "LIKE", "%{$ci}%")
+         $funcionarios = Funcionario::select('t_funcionario.id','t_funcionario.numero_ci','t_funcionario.complemento'
+            ,'t_funcionario.expedido','t_funcionario.nombres','t_funcionario.apellido_paterno',
+            't_funcionario.apellido_materno')
+            ->where("t_funcionario.numero_ci", "LIKE", "%{$ci}%")
+            ->join('t_usuarios as us','t_funcionario.id_usuario','=','us.id')
+            ->paginate(10); 
+         return view('funcionario.index', compact('funcionarios'));
+      }
+      $funcionarios = Funcionario::select('t_funcionario.id','t_funcionario.numero_ci','t_funcionario.complemento'
+      ,'t_funcionario.expedido','t_funcionario.nombres','t_funcionario.apellido_paterno',
+      't_funcionario.apellido_materno')
+      ->join('t_usuarios as us','t_funcionario.id_usuario','=','us.id')
+      ->paginate(10);
+      return view('funcionario.index', compact('funcionarios'));
+   }
    public function createPDF(Request $request){
       $ID = $request->query('idF');
       list($funcionario, $conyugues,
@@ -239,7 +239,11 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $fun = Funcionario::findOrFail($id);
+      if($fun){
+         $fun->delete();
+      }
+      return redirect('/funcionario');
     }
     /**
      */

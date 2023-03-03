@@ -140,6 +140,9 @@ input[type="checkbox"] {
 .mx-38x{
    max-width: 380px;
 }
+.mx-20x{
+   max-width: 200px;
+}
 .box-input {
    margin-bottom: 12px;
    position: relative;

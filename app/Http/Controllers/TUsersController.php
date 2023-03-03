@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\DB;
+use Session;
 
 class TUsersController extends Controller
 {
@@ -18,14 +20,26 @@ class TUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-      // $all_columns = Schema::getColumnListing('t_usuarios');
-      // $exclude_columns = ['password', 'created_at', 'updated_at', 'id'];
-      // $get_columns = 'id, email, estado, nivel'; // array_diff( $all_columns, $exclude_columns);
-      // // echo dd($get_columns); 
-      $usuarios = User::join('t_funcionario as f', 'f.id_usuario', '=', 't_usuarios.id')
-                     ->where('t_usuarios.nivel', 'ADMIN')->get();
-      // $usuarios = User::all();
+    public function index(Request $request){
+      $nivel = $request->query('nivel');
+      $nivel = $nivel == 'FUNCIONARIO' ? $nivel : 'ADMIN';
+
+      $ci = $request->query('ci');
+      $ci = $ci ? $ci : null;
+
+      if($ci){
+         $usuarios = User::select('t_usuarios.*', 'f.nombres', 'f.numero_ci')
+            ->leftJoin('t_funcionario as f', 't_usuarios.id', '=', 'f.id_usuario')
+            // ->where('t_usuarios.nivel', $nivel)
+            ->where('f.numero_ci', "LIKE", "%{$ci}%")
+            ->get();
+      }else{
+         $usuarios = User::select('t_usuarios.*', 'f.nombres', 'f.numero_ci')
+         ->leftJoin('t_funcionario as f', 't_usuarios.id', '=', 'f.id_usuario')
+         ->where('t_usuarios.nivel', $nivel)
+         ->get();
+      }
+
       return view('usuario.index')->with('usuarios', $usuarios);
     }
 
@@ -47,6 +61,7 @@ class TUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+      if( !Session::get('isAdmin') ) return;
       $request->validate([
          'email' => 'required|email|unique:t_usuarios',
          'password' => 'required|string|min:6',
@@ -89,15 +104,12 @@ class TUsersController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+      $usuario = User::select('t_usuarios.*', 'f.nombres', 'f.apellido_paterno', 'f.apellido_materno', 'f.numero_ci')
+         ->leftJoin('t_funcionario as f', 't_usuarios.id', '=', 'f.id_usuario')
+         ->where('t_usuarios.id', $id)
+         ->first();
+      return view('usuario.edit')->with('usuario', $usuario);
     }
 
     /**
@@ -126,6 +138,6 @@ class TUsersController extends Controller
       }
       $user = User::findOrFail($id);
       $user->delete();
-      return redirect()->back();
+      return redirect('/usuarios');
     }
 }
