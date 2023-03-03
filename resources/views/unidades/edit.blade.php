@@ -9,7 +9,7 @@
             class="row g-3 form-register">
             @csrf
             {{ method_field('PUT') }}
-            <div class="col-md-4">
+            <div class="col-md-12">
                <label for="f1" clas="form-label">Nombre de la unidad</label>
                <input type="text" name="nombre" class="form-control" value="{{ $unidad->nombre }}" id="f1"
                   required>
