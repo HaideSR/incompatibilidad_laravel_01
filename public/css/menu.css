@@ -80,7 +80,7 @@
 }
 
 .sidebar .sidebar-layout {
-   height: 100%;
+   height: 100vh;
    width: 100%;
    display: flex;
    flex-direction: column;
@@ -99,6 +99,7 @@
 .sidebar .sidebar-layout .sidebar-content {
    flex-grow: 1;
    padding: 10px 0;
+   overflow: auto;
 }
 
 .sidebar .sidebar-layout .sidebar-footer {
@@ -375,8 +376,11 @@ body {
    padding: 1rem;
    border-bottom: 1px solid rgba(83, 93, 125, 0.3);
    background-color: #964e00;
+   height: 25%;
 }
-
+.sidebar-content{
+   height: 75%;
+}
 .text-name-system {
    background: rgba(0, 0, 0, 0.16);
    font-weight: bold;
@@ -388,7 +392,7 @@ body {
 }
 
 .logo-sidebar {
-   padding: 1rem 0;
+   padding-bottom: 1rem;
 }
 
 .logo-sidebar img {
