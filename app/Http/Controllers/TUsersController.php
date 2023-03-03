@@ -23,11 +23,9 @@ class TUsersController extends Controller
       // $exclude_columns = ['password', 'created_at', 'updated_at', 'id'];
       // $get_columns = 'id, email, estado, nivel'; // array_diff( $all_columns, $exclude_columns);
       // // echo dd($get_columns); 
-      $usuarios = User::select('f.id as id_funcionario', 'f.nombres', 't_usuarios.id', 'email', 'estado', 'nivel')
-                     ->join('t_funcionario as f','f.id_usuario','=','t_usuarios.id')
-                     ->where('nivel', 'ADMIN')
-                     ->get();
-
+      $usuarios = User::join('t_funcionario as f', 'f.id_usuario', '=', 't_usuarios.id')
+                     ->where('t_usuarios.nivel', 'ADMIN')->get();
+      // $usuarios = User::all();
       return view('usuario.index')->with('usuarios', $usuarios);
     }
 
@@ -63,20 +61,20 @@ class TUsersController extends Controller
       $request->validate([
          'numero_ci' => 'required|unique:t_funcionario',
       ]);
-      $func = new Funcionario();
-      $func->id_usuario = $user->id;
-      $func->numero_ci = $request->get('numero_ci');
-      $func->apellido_paterno = $request->get('apellido_paterno');
-      $func->apellido_materno = $request->get('apellido_materno');
-      $func->nombres = $request->get('nombres');
-      $func->fecha_registro = now();
       try {
+         $func = new Funcionario();
+         $func->id_usuario = $user->id;
+         $func->numero_ci = $request->get('numero_ci');
+         $func->apellido_paterno = $request->get('apellido_paterno');
+         $func->apellido_materno = $request->get('apellido_materno');
+         $func->nombres = $request->get('nombres');
+         $func->fecha_registro = now();
          $func->save();
       } catch (\Throwable $th) {
          $usr = User::findOrFail($user->id);
          $usr->delete();
       }
-      // $func->save();
+      
       return redirect('/usuarios');
     }
 
@@ -123,7 +121,9 @@ class TUsersController extends Controller
     public function destroy($id)
     {
       $fun = Funcionario::firstWhere('id_usuario', $id);
-      $fun->delete();
+      if($fun){
+         $fun->delete();
+      }
       $user = User::findOrFail($id);
       $user->delete();
       return redirect()->back();
