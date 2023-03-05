@@ -489,8 +489,13 @@ body {
    }
    .menu-head-item{
       display: flex;
+      font-size: .8rem;
    }
    .layout .content{
       padding: 12px;
+   }
+   .menu-head{
+      margin-left: 2px !important;
+      padding-left: 2px !important;
    }
 }
