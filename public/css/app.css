@@ -140,6 +140,9 @@ input[type="checkbox"] {
 .mx-38x{
    max-width: 380px;
 }
+.mx-20x{
+   max-width: 200px;
+}
 .box-input {
    margin-bottom: 12px;
    position: relative;
@@ -190,5 +193,13 @@ input[type="checkbox"] {
    pointer-events: none;
 }
 .princ-first{
-   padding: 2rem;
+   padding: 1.4rem;
+   line-height: 1.2;
+   padding-right: 1rem;
 }
+.princ-first .row{
+   border-bottom: solid 1px #f0f0f0;
+   padding-top: 6px;
+   padding-bottom: 6px;
+}
+

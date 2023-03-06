@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('celular')->nullable();
             $table->string('fecha_registro');
             $table->string('firma_id')->nullable();
-            $table->string('estado_civil');
+            $table->string('estado_civil')->nullable();
             $table->BigInteger('id_usuario')->unsigned();
             $table->BigInteger('id_unidad')->nullable()->unsigned();
             $table->BigInteger('id_cargo')->nullable()->unsigned();

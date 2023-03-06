@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div class="card">
-   <div class="accordion m" id="acordion">
+   <div class="box-fun-full" id="acordion">
       <div class="mb">
          <div class="flex-sb">
             <div>
