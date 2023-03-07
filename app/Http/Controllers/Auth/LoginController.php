@@ -100,20 +100,19 @@ class LoginController extends Controller
                return redirect('/inicio');
             } else {
                $existeUsuario = User::where('email', $ciudadanoDigital->email)->first();
+               $names = (object) $ciudadanoDigital->nombre;
                if($existeUsuario){
                   $newUser = $existeUsuario;
                }else{
                // registramos un user y su funcioanrio con los datos q agetic devuelva, siempre y cuando no exista
-               $newUser = new User();
-               $newUser->email = $ciudadanoDigital->email;
-               $names = (object) $ciudadanoDigital->nombre;
-               $newUser->nombre  = $names->nombres . " " . $names->primer_apellido . " " . $names->segundo_apellido;
-               $newUser->password = '123456789';
-               $newUser->nivel = 'FUNCIONARIO';
-               $newUser->estado = 1;
-               $newUser->confirmado = 1;
-               $newUser->save();
-
+                  $newUser = new User();
+                  $newUser->email = $ciudadanoDigital->email;
+                  $newUser->nombre  = $names->nombres . " " . $names->primer_apellido . " " . $names->segundo_apellido;
+                  $newUser->password = '123456789';
+                  $newUser->nivel = 'FUNCIONARIO';
+                  $newUser->estado = 1;
+                  $newUser->confirmado = 1;
+                  $newUser->save();
                }
                // se entiende??
                // vamos a autoregistrar para aquellos que no existen
