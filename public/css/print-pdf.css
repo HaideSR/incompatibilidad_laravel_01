@@ -54,9 +54,18 @@ table td {
 .pr-firma {
    margin-top: 40px;
 }
+.pr-firma-img{
+   width: 160px;
+   object-fit: contain;
+   background-color: transparent;
+   max-height: 160px;
+}
 .pr-bloque { 
    page-break-before: auto;
- }
+}
+.opacity-4{
+   opacity: .4;
+}
 /* body{
    margin: 130px 0 0 0 !important;
 } */

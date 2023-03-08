@@ -17,6 +17,8 @@ use App\Models\Unidades;
 use App\Models\TipoCausalesIncompatibilidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+
 use PDF;
 use Session;
 
@@ -53,15 +55,12 @@ class FuncionarioController extends Controller
        $adopciones, $si_no,
        $parientes_mp, $causalRespuestas, $tiposCausales,
         $fiscalia, $unidad, $cargo) = $this->getDatosFuncionario($ID);
-
+      $firma = $this->getFirma($funcionario->numero_ci);
       $fileNamePdf = $funcionario->nombres;
-      // return view('funcionario.pdf.index',
-      //    compact('funcionario', 'conyugues', 'consaguinidades', 'afinidades',
-      //    'adopciones', 'si_no', 'parientes_mp', 'causalRespuestas', 'tiposCausales'));
       $pdf = PDF::loadView(
          'funcionario.pdf.index',
          compact('funcionario', 'conyugues', 'consaguinidades', 'afinidades', 'adopciones',
-          'si_no', 'parientes_mp', 'causalRespuestas', 'tiposCausales', 'unidad', 'fiscalia', 'cargo')
+          'si_no', 'parientes_mp', 'causalRespuestas', 'tiposCausales', 'unidad', 'fiscalia', 'cargo', 'firma')
       );
       // return $pdf->download('Declaración jurada de '.$fileNamePdf.'.pdf');
       return $pdf->stream('Declaración jurada de '.$fileNamePdf.'.pdf');
@@ -70,6 +69,32 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private function getFirma($ci){
+      // $URL_DOC = 'https://correspondencia-api-test.fiscalia.gob.bo/v1/personas/firmaFisicaId';
+      // $URL_FIRMA_ID = 'https://correspondencia-api-test.fiscalia.gob.bo/v1/personas/obtener/firma';
+      
+      $URL_DOC = env('API_CORRESPONDENCIA').'/personas/firmaFisicaId';
+      $URL_FIRMA_ID = env('API_CORRESPONDENCIA').'/personas/obtener/firma';
+      $response = $this->getRequestExternal($URL_DOC, ['numeroDocumento'=> $ci]);
+      if( $response ){
+         $firmaFisicaId = $response['firmaFisicaId'];
+         $resFirma = $this->getRequestExternal($URL_FIRMA_ID, ['firmaFisicaId'=> $firmaFisicaId] );
+         if( $resFirma ){
+            return $resFirma['firmaBase64'];
+         }
+      }
+      return;
+   }
+   private function getRequestExternal($url, $params){
+      $res = Http::withHeaders([
+         'accept' => '*/*',
+         'Content-Type' => 'application/json', 
+      ])->post($url, $params);
+      if($res['error'] == false && ($res['status'] == 200 || $res['status'] == 201)){
+         return $res['response'];
+      }
+      return;
+   }
     public function create()
     {
         $fiscalias = Fiscalias::all();

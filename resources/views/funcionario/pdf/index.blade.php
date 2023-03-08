@@ -100,7 +100,7 @@
                            </tr>
                            <tr>
                               <td>Fecha registro</td>
-                              <td>{{ $funcionario->fecha_registro }}</td>
+                              <td>{{ date('d/m/Y', strtotime($funcionario->fecha_registro)) }} {{ date('H:i:s', strtotime($funcionario->fecha_registro)) }}</td>
                            </tr>
                         </tbody>
                      </table>
@@ -351,16 +351,26 @@
                </td>
             </tr>
          </tbody>
-         {{-- <tbody class="tb-sup">
+         <tbody class="tb-sup">
             <tr>
                <td>
                   <div class="pr-bloque text-center pr-firma">
-                     <p class="bold mt">FIRMA DEL FUNCIONARIO</p>
+                     @if($firma)
+                        <img src="data:image/jpeg;base64, {{$firma}}" class="pr-firma-img">
+                     @else
+                        <span class="opacity-4">Sin firma digital</span>
+                     @endIf
+                     
+                     <p class="bold mt">FUNCIONARIO</p>
+                     <p>{{ $funcionario->nombres }} {{ $funcionario->apellido_paterno }} {{ $funcionario->apellido_materno }}  </p>
+                     @if($cargo)
+                        <p>{{ $cargo->nombre }}</p>
+                     @endIf
                      <p id="print-date">{{ date('d/m/Y') }} {{ date('H:i:s') }}</p>
                   </div>
                </td>
             </tr>
-         </tbody> --}}
+         </tbody>
       </table>
    </div>
 </body>
