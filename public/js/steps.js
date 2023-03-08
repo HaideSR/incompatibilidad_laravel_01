@@ -72,7 +72,7 @@ function actualIndex(){
 function initShow(){
    const nroIndex = actualIndex()
    showItem(nroIndex)
-   if(grupos.length){
+   if(grupos && grupos.length){
       validarOpciones()
    }
 }
