@@ -15,16 +15,13 @@ return new class extends Migration
     {
         Schema::create('t_declaraciones', function (Blueprint $table) {
             $table->id();
-
             $table->string('numero_ci');
             $table->string('fecha_declaracion');
             $table->string('motivo');
             $table->string('archivo');
             $table->BigInteger('id_funcionario')->unsigned();
-
             $table->timestamps();
-
-            $table->foreign('id_funcionario')->references('id')->on('t_funcionario')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_funcionario')->references('id')->on('t_funcionario')->onDelete('cascade');
         });
     }
 

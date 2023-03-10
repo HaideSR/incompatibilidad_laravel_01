@@ -14,14 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('t_niveles_permisos', function (Blueprint $table) {
-            //$table->id();
-
             $table->string('nombre');
             $table->string('permiso');
             $table->BigInteger('id_usuarionivel')->unsigned();
-
             $table->timestamps();
-
             $table->foreign('id_usuarionivel')->references('id')->on('t_usuario_nivels')->onDelete('cascade');
         });
     }

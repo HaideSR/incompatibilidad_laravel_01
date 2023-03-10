@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('t_causal_incompatibilidad', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
             $table->BigInteger('estado');
+            $table->string('descripcion')->nullable();
             $table->BigInteger('id_funcionario')->unsigned();
             $table->BigInteger('id_tipo_causal')->unsigned();
             $table->timestamps();

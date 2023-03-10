@@ -69,7 +69,7 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private function getFirma($ci){
+   private function getFirma($ci){
       // $URL_DOC = 'https://correspondencia-api-test.fiscalia.gob.bo/v1/personas/firmaFisicaId';
       // $URL_FIRMA_ID = 'https://correspondencia-api-test.fiscalia.gob.bo/v1/personas/obtener/firma';
       
@@ -195,6 +195,7 @@ class FuncionarioController extends Controller
       $parientes_mp = ParientesMp::select()->where('id_funcionario', '=', $id)->get();
       $causal = Causal::select()->where('id_funcionario', '=', $id)->get();
       $tiposCausales = TipoCausalesIncompatibilidad::all();
+      $formularioCompleto = $this->verificaSiCompleto( $consaguinidad, $afinidad, $adopcion, $si_no, $parientes_mp );
 
       return view('funcionario.show')
          ->with('funcionario', $funcionario)
@@ -208,9 +209,21 @@ class FuncionarioController extends Controller
          ->with('fiscalia', $fiscalia)
          ->with('unidad', $unidad)
          ->with('cargo', $cargo)
-         ->with('tiposCausales', $tiposCausales);
+         ->with('tiposCausales', $tiposCausales)
+         ->with('formularioCompleto', $formularioCompleto);
     }
 
+   private function verificaSiCompleto($consaguinidad, $afinidad, $adopcion, $si_no, $parientes_mp){
+      if( $consaguinidad->isEmpty() &&
+          $afinidad->isEmpty() && 
+          $adopcion->isEmpty() &&
+          $parientes_mp->isEmpty() &&
+          !$si_no
+         ){
+         return false;
+      }
+      return true;
+   }
     /**
      * Show the form for editing the specified resource.
      *
