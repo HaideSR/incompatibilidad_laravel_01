@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('cargo');
             $table->BigInteger('id_fiscalia')->unsigned();
             $table->timestamps();
-            $table->foreign('id_fiscalia')->references('id')->on('t_fiscalias')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_fiscalia')->references('id')->on('t_fiscalias')->onDelete('cascade');
         });
     }
 

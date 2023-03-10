@@ -24,11 +24,8 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('direccion');
             $table->BigInteger('id_funcionario')->unsigned();
-           
-
             $table->timestamps();
-
-            $table->foreign('id_funcionario')->references('id')->on('t_funcionario')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_funcionario')->references('id')->on('t_funcionario')->onDelete('cascade');
         });
     }
 

@@ -26,9 +26,8 @@ return new class extends Migration
             $table->BigInteger('id_motivodeclaracion')->unsigned();
             $table->BigInteger('id_funcionario')->unsigned();
             $table->timestamps();
-
-            $table->foreign('id_funcionario')->references('id')->on('t_funcionario')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_motivodeclaracion')->references('id')->on('t_motivo_declaracion')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_funcionario')->references('id')->on('t_funcionario')->onDelete('cascade');
+            $table->foreign('id_motivodeclaracion')->references('id')->on('t_motivo_declaracion')->onDelete('cascade');
         });
     }
 

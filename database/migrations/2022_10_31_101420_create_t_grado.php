@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('t_grado', function (Blueprint $table) {
             $table->id();
-
             $table->string('grados');
-
             $table->timestamps();
         });
     }
