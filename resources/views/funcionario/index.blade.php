@@ -6,10 +6,10 @@
          @if (!Auth::user()->confirmado && !Session::get('isAdmin'))
          @endif
          @if (Session::get('isAdmin'))
-            <a href="{{ route('funcionario.create') }}" class="btn btn-primary">
+            {{-- <a href="{{ route('funcionario.create') }}" class="btn btn-primary">
                <i class="icon-add"></i>
                <span>Registrar Funcionario</span>
-            </a>
+            </a> --}}
             <div class="mt mx-38x">
                <form action="/funcionario" method="GET" class="flex">
                   <input name="ci" type="text" value="{{request()->query('ci')}}" placeholder="Buscar funcionario por C.I" class="form-control">

@@ -72,6 +72,7 @@ class FuncionarioController extends Controller
     private function getFirma($ci){
       // $URL_DOC = 'https://correspondencia-api-test.fiscalia.gob.bo/v1/personas/firmaFisicaId';
       // $URL_FIRMA_ID = 'https://correspondencia-api-test.fiscalia.gob.bo/v1/personas/obtener/firma';
+      //1119323
       
       $URL_DOC = env('API_CORRESPONDENCIA').'/personas/firmaFisicaId';
       $URL_FIRMA_ID = env('API_CORRESPONDENCIA').'/personas/obtener/firma';
