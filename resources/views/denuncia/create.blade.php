@@ -1,7 +1,7 @@
 @extends('home')
 @section('contenido')
    <div class="card max-800">
-      <div class="card-body">
+      <div class="card-body-form">
          <h4 class="text-center title-frm">Agregar Denuncia</h4>
          <form action="{{ '/denuncia' }}" method="post" enctype="multipart/form-data" class="row g-3 form-register">
             {{-- <input type="hidden" value="{{request()->query('idF')}}" name="id_funcionario"> --}}

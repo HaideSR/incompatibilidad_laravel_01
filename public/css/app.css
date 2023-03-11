@@ -37,7 +37,18 @@ body {
 .mb {
    margin-bottom: .8rem;
 }
-
+.card-body-form{
+   border-radius: 10px;
+   padding: 30px;
+}
+.form-register button[type=submit]{
+   min-width: 200px;
+   background: linear-gradient(320deg, #084195, #0d6efd);
+   /* background: linear-gradient(180deg, #4480FF 0%, #115DFC 50%, #0550ED 100%); */
+}
+.form-register input {
+   background-color: #f2f2f2;
+}
 .form-register .row {
    margin-top: .8rem
 }
@@ -93,8 +104,11 @@ input[type="checkbox"] {
 .title-frm{
    margin-bottom: 1.3rem;
    padding-bottom: 1rem;
-   border-bottom: dotted 1px #bababa;
    color: #5088ff;
+   border-bottom: dotted 1px;
+   text-transform: uppercase;
+   font-size: 18px;
+   font-weight: bold;
 }
 .inline{
    display: inline-block;
